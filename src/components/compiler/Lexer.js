@@ -1,7 +1,7 @@
 // Lexer for Bawal Code Language
 export class Lexer {
     constructor() {
-        this.keywords = new Set(['bawal', 'suru', 'khatam', 'ye', 'bol', 'nivesh', 'agar', 'warna', 'jabtak', 'kaam']);
+        this.keywords = new Set(['bawal', 'suru', 'khatam', 'ye', 'bol', 'nivesh', 'agar', 'warna', 'jabtak', 'kaam', 'wapis']);
         this.operators = new Set(['+', '-', '*', '/', '=', '==', '!=', '<', '>', '<=', '>=', '&&', '||']);
     }
 

@@ -76,6 +76,7 @@ export class Parser {
                 case 'agar': return this.parseIfStatement();
                 case 'jabtak': return this.parseWhileStatement();
                 case 'kaam': return this.parseFunctionDeclaration();
+                case 'wapis': return this.parseReturnStatement();
                 case 'bawal':
                     // Check if this is 'bawal khatam' - if so, we've reached the end
                     if (this.check('keyword', 'khatam')) {
@@ -135,6 +136,22 @@ export class Parser {
         return {
             type: 'InputStatement',
             variable
+        };
+    }
+
+    parseReturnStatement() {
+        let value = null;
+        
+        // Check if there's an expression to return
+        if (!this.check('semicolon')) {
+            value = this.parseExpression();
+        }
+        
+        this.consume('semicolon', "Expected ';' after return statement");
+        
+        return {
+            type: 'ReturnStatement',
+            value
         };
     }
 

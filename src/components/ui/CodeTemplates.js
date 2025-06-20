@@ -10,17 +10,17 @@ const TEMPLATE_CATEGORIES = {
                 description: "Learn variable declaration and basic math operations",
                 code: `bawal suru
 
-ye x = 20;
-ye y = 10;
-ye sum = x + y;
-ye difference = x - y;
-ye product = x * y;
-ye division = x / y;
+ye pehla_sankhya = 20;
+ye dusra_sankhya = 10;
+ye jod = pehla_sankhya + dusra_sankhya;
+ye antar = pehla_sankhya - dusra_sankhya;
+ye gunafal = pehla_sankhya * dusra_sankhya;
+ye bhag = pehla_sankhya / dusra_sankhya;
 
-bol "Sum: " + sum;
-bol "Difference: " + difference;
-bol "Product: " + product;
-bol "Division: " + division;
+bol "जोड़: " + jod;
+bol "अंतर: " + antar;
+bol "गुणफल: " + gunafal;
+bol "भाग: " + bhag;
 
 bawal khatam`
             },
@@ -29,13 +29,13 @@ bawal khatam`
                 description: "Working with text and string concatenation",
                 code: `bawal suru
 
-ye firstName = "Bawal";
-ye lastName = "Code";
-ye greeting = "Hello, ";
-ye fullName = firstName + " " + lastName;
+ye pehla_naam = "Bawal";
+ye antim_naam = "Code";
+ye abhivadan = "नमस्ते, ";
+ye pura_naam = pehla_naam + " " + antim_naam;
 
-bol greeting + fullName + "!";
-bol "Combining both name: " + (firstName + lastName);
+bol abhivadan + pura_naam + "!";
+bol "दोनों नाम मिलाकर: " + (pehla_naam + antim_naam);
 
 bawal khatam`
             }
@@ -50,19 +50,19 @@ bawal khatam`
                 description: "Taking input from users and processing it",
                 code: `bawal suru
 
-bol "Please enter your name:";
-nivesh userName;
+bol "कृपया अपना नाम दर्ज करें:";
+nivesh upyogkarta_naam;
 
-bol "Please enter your age:";
-nivesh userAge;
+bol "कृपया अपनी उम्र दर्ज करें:";
+nivesh upyogkarta_umar;
 
-bol "Hello " + userName + "!";
-bol "You are " + userAge + " years old.";
+bol "नमस्ते " + upyogkarta_naam + "!";
+bol "आपकी उम्र " + upyogkarta_umar + " साल है।";
 
-agar (userAge >= 18) {
-    bol "You are an adult!";
+agar (upyogkarta_umar >= 18) {
+    bol "आप एक वयस्क हैं!";
 } warna {
-    bol "You are a minor.";
+    bol "आप नाबालिग हैं।";
 }
 
 bawal khatam`
@@ -72,29 +72,29 @@ bawal khatam`
                 description: "Simple arithmetic calculator",
                 code: `bawal suru
 
-bol "Enter first number:";
-nivesh num1;
+bol "पहली संख्या दर्ज करें:";
+nivesh pehla_sankhya;
 
-bol "Enter second number:";
-nivesh num2;
+bol "दूसरी संख्या दर्ज करें:";
+nivesh dusra_sankhya;
 
-bol "Choose operation (+, -, *, /):";
-nivesh operation;
+bol "गणना चुनें (+, -, *, /):";
+nivesh kaarya;
 
-agar (operation == "+") {
-    bol "Result: " + (num1 + num2);
-} warna agar (operation == "-") {
-    bol "Result: " + (num1 - num2);
-} warna agar (operation == "*") {
-    bol "Result: " + (num1 * num2);
-} warna agar (operation == "/") {
-    agar (num2 != 0) {
-        bol "Result: " + (num1 / num2);
+agar (kaarya == "+") {
+    bol "परिणाम: " + (pehla_sankhya + dusra_sankhya);
+} warna agar (kaarya == "-") {
+    bol "परिणाम: " + (pehla_sankhya - dusra_sankhya);
+} warna agar (kaarya == "*") {
+    bol "परिणाम: " + (pehla_sankhya * dusra_sankhya);
+} warna agar (kaarya == "/") {
+    agar (dusra_sankhya != 0) {
+        bol "परिणाम: " + (pehla_sankhya / dusra_sankhya);
     } warna {
-        bol "Error: Division by zero!";
+        bol "त्रुटि: शून्य से भाग!";
     }
 } warna {
-    bol "Invalid operation!";
+    bol "गलत गणना!";
 }
 
 bawal khatam`
@@ -110,21 +110,21 @@ bawal khatam`
                 description: "Calculate grades based on marks",
                 code: `bawal suru
 
-bol "Enter your marks (0-100):";
-nivesh marks;
+bol "अपने अंक दर्ज करें (0-100):";
+nivesh ank;
 
-agar (marks >= 90) {
-    bol "Grade: A+ (Excellent!)";
-} warna agar (marks >= 80) {
-    bol "Grade: A (Very Good!)";
-} warna agar (marks >= 70) {
-    bol "Grade: B (Good!)";
-} warna agar (marks >= 60) {
-    bol "Grade: C (Average)";
-} warna agar (marks >= 50) {
-    bol "Grade: D (Below Average)";
+agar (ank >= 90) {
+    bol "श्रेणी: A+ (उत्कृष्ट!)";
+} warna agar (ank >= 80) {
+    bol "श्रेणी: A (बहुत अच्छा!)";
+} warna agar (ank >= 70) {
+    bol "श्रेणी: B (अच्छा!)";
+} warna agar (ank >= 60) {
+    bol "श्रेणी: C (औसत)";
+} warna agar (ank >= 50) {
+    bol "श्रेणी: D (औसत से कम)";
 } warna {
-    bol "Grade: F (Fail)";
+    bol "श्रेणी: F (अनुत्तीर्ण)";
 }
 
 bawal khatam`
@@ -134,21 +134,21 @@ bawal khatam`
                 description: "Compare multiple numbers",
                 code: `bawal suru
 
-bol "Enter three numbers:";
-nivesh a;
-nivesh b;
-nivesh c;
+bol "तीन संख्या दर्ज करें:";
+nivesh pehla;
+nivesh dusra;
+nivesh tisra;
 
-agar (a > b && a > c) {
-    bol a + " is the largest";
-} warna agar (b > a && b > c) {
-    bol b + " is the largest";
+agar (pehla > dusra && pehla > tisra) {
+    bol pehla + " सबसे बड़ा है";
+} warna agar (dusra > pehla && dusra > tisra) {
+    bol dusra + " सबसे बड़ा है";
 } warna {
-    bol c + " is the largest";
+    bol tisra + " सबसे बड़ा है";
 }
 
-agar (a == b && b == c) {
-    bol "All numbers are equal!";
+agar (pehla == dusra && dusra == tisra) {
+    bol "सभी संख्याएं समान हैं!";
 }
 
 bawal khatam`
@@ -164,15 +164,15 @@ bawal khatam`
                 description: "Basic counting using while loop",
                 code: `bawal suru
 
-ye i = 1;
+ye ginti = 1;
 
-bol "Counting from 1 to 10:";
-jabtak (i <= 10) {
-    bol "Number: " + i;
-    ye i = i + 1;
+bol "1 से 10 तक गिनती:";
+jabtak (ginti <= 10) {
+    bol "संख्या: " + ginti;
+    ye ginti = ginti + 1;
 }
 
-bol "Counting finished!";
+bol "गिनती पूरी!";
 
 bawal khatam`
             },
@@ -181,16 +181,16 @@ bawal khatam`
                 description: "Generate multiplication table",
                 code: `bawal suru
 
-bol "Enter a number for multiplication table:";
-nivesh num;
+bol "पहाड़े के लिए संख्या दर्ज करें:";
+nivesh sankhya;
 
-ye i = 1;
-bol "Multiplication table of " + num + ":";
+ye ginti = 1;
+bol sankhya + " का पहाड़ा:";
 
-jabtak (i <= 10) {
-    ye result = num * i;
-    bol num + " x " + i + " = " + result;
-    ye i = i + 1;
+jabtak (ginti <= 10) {
+    ye parinaam = sankhya * ginti;
+    bol sankhya + " x " + ginti + " = " + parinaam;
+    ye ginti = ginti + 1;
 }
 
 bawal khatam`
@@ -206,20 +206,20 @@ bawal khatam`
                 description: "Creating and calling functions",
                 code: `bawal suru
 
-kaam greet(name) {
-    bol "Hello, " + name + "!";
-    bol "Welcome to Bawal Code!";
+kaam abhivadan(naam) {
+    bol "नमस्ते, " + naam + "!";
+    bol "Bawal Code में आपका स्वागत है!";
 }
 
-kaam add(a, b) {
-    ye result = a + b;
-    bol a + " + " + b + " = " + result;
+kaam jod(pehla, dusra) {
+    ye parinaam = pehla + dusra;
+    bol pehla + " + " + dusra + " = " + parinaam;
 }
 
-// Calling functions
-greet("Developer");
-add(15, 25);
-add(100, 50);
+// फ़ंक्शन को कॉल करना
+abhivadan("डेवलपर");
+jod(15, 25);
+jod(100, 50);
 
 bawal khatam`
             },
@@ -228,29 +228,29 @@ bawal khatam`
                 description: "Functions with complex logic",
                 code: `bawal suru
 
-kaam isEven(number) {
-    agar (number % 2 == 0) {
-        bol number + " is even";
+kaam sam_visham(sankhya) {
+    agar (sankhya % 2 == 0) {
+        bol sankhya + " सम संख्या है";
     } warna {
-        bol number + " is odd";
+        bol sankhya + " विषम संख्या है";
     }
 }
 
-kaam factorial(n) {
-    ye result = 1;
-    ye i = 1;
+kaam gunitkaram(sankhya) {
+    ye parinaam = 1;
+    ye ginti = 1;
     
-    jabtak (i <= n) {
-        ye result = result * i;
-        ye i = i + 1;
+    jabtak (ginti <= sankhya) {
+        ye parinaam = parinaam * ginti;
+        ye ginti = ginti + 1;
     }
     
-    bol "Factorial of " + n + " is " + result;
+    bol sankhya + " का गुणनफल " + parinaam + " है";
 }
 
-isEven(7);
-isEven(10);
-factorial(5);
+sam_visham(7);
+sam_visham(10);
+gunitkaram(5);
 
 bawal khatam`
             }

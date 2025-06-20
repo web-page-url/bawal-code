@@ -1,14 +1,16 @@
 import React from 'react';
 
 export function CodeEditor({ 
-    value, 
+    value = '', 
     onChange, 
     onCompile, 
     isCompiling = false,
-    placeholder = "bawal suru\n\n// Enter your Bawal Code here...\n\nbawal khatam",
+    placeholder = "bawal suru\n\n// यहाँ अपना Bawal Code लिखें...\nye sandesh = 'नमस्ते';\nbol sandesh;\n\nbawal khatam",
     showLineNumbers = true 
 }) {
-    const lineCount = value.split('\n').length;
+    // Ensure value is always a string to prevent split errors
+    const safeValue = value || '';
+    const lineCount = safeValue.split('\n').length;
     const lines = Array.from({ length: Math.max(lineCount, 10) }, (_, i) => i + 1);
 
     const handleKeyDown = (e) => {
@@ -16,7 +18,7 @@ export function CodeEditor({
         if (e.key === 'Enter') {
             const textarea = e.target;
             const start = textarea.selectionStart;
-            const beforeCursor = value.substring(0, start);
+            const beforeCursor = safeValue.substring(0, start);
             const currentLine = beforeCursor.split('\n').pop();
             const indent = currentLine.match(/^\s*/)[0];
             
@@ -24,7 +26,7 @@ export function CodeEditor({
             const extraIndent = currentLine.includes('{') ? '    ' : '';
             
             setTimeout(() => {
-                const newValue = value.substring(0, start) + '\n' + indent + extraIndent + value.substring(start);
+                const newValue = safeValue.substring(0, start) + '\n' + indent + extraIndent + safeValue.substring(start);
                 onChange({ target: { value: newValue } });
                 
                 // Set cursor position
@@ -46,7 +48,7 @@ export function CodeEditor({
             const start = textarea.selectionStart;
             const end = textarea.selectionEnd;
             
-            const newValue = value.substring(0, start) + '    ' + value.substring(end);
+            const newValue = safeValue.substring(0, start) + '    ' + safeValue.substring(end);
             onChange({ target: { value: newValue } });
             
             setTimeout(() => {
@@ -66,7 +68,7 @@ export function CodeEditor({
                     </div>
                 )}
                 <textarea
-                    value={value}
+                    value={safeValue}
                     onChange={onChange}
                     onKeyDown={handleKeyDown}
                     placeholder={placeholder}
@@ -79,7 +81,7 @@ export function CodeEditor({
                 />
             </div>
             <div className="bg-[#0a2440] px-5 py-2 text-xs text-text-secondary border-t border-primary flex justify-between items-center">
-                <span>Lines: {lineCount} | Characters: {value.length}</span>
+                <span>Lines: {lineCount} | Characters: {safeValue.length}</span>
                 <span>Press Ctrl+Enter to compile quickly</span>
             </div>
             <button 

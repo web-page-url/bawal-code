@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from "next/head";
+import Link from "next/link";
 import { useCompiler } from '../hooks/useCompiler';
 import { CodeEditor } from '../components/ui/CodeEditor';
 import { OutputDisplay } from '../components/ui/OutputDisplay';
@@ -84,6 +85,26 @@ function CodeMantraCompiler() {
                     <p className="text-text-secondary text-xl font-light mb-6">
                          Hindi में Programming का स्वाद - Experience Programming in Hindi
                     </p>
+                    <div className="flex flex-wrap justify-center gap-4 mb-8">
+                        <Link href="/docs" className="bg-primary text-background px-8 py-3 rounded-full font-bold transition-all duration-300 hover:bg-primary-dark hover:scale-105 shadow-lg inline-flex items-center gap-2">
+                            📚 Documentation
+                        </Link>
+                        <button 
+                            onClick={() => document.getElementById('code-editor')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="bg-transparent border-2 border-primary text-primary px-8 py-3 rounded-full font-bold transition-all duration-300 hover:bg-primary hover:text-background hover:scale-105"
+                        >
+                            🚀 Try Now
+                        </button>
+                        <Link href="/playground" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
+                            🤖 AI Playground
+                        </Link>
+                        <Link href="/feedback" className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
+                            💭 Feedback
+                        </Link>
+                        {/* <Link href="/admin/dashboard" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
+                            📊 Admin Dashboard
+                        </Link> */}
+                    </div>
                 </header>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -103,7 +124,7 @@ function CodeMantraCompiler() {
                     <CodeTemplates onSelectTemplate={handleTemplateSelect} />
                 </section>
 
-                <section className="mb-12">
+                <section id="code-editor" className="mb-12">
                     <CodeEditor
                         value={input}
                         onChange={handleInputChange}
@@ -114,8 +135,8 @@ function CodeMantraCompiler() {
 
 bawal suru
 
-ye message = 'Hello World!';
-bol message;
+ye sandesh = 'नमस्ते दुनिया!';
+bol sandesh;
 
 bawal khatam"
                     />

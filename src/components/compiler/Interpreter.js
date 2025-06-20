@@ -54,6 +54,8 @@ export class Interpreter {
                 return await this.executeWhileStatement(statement);
             case 'FunctionDeclaration':
                 return this.executeFunctionDeclaration(statement);
+            case 'ReturnStatement':
+                return await this.executeReturnStatement(statement);
             case 'ExpressionStatement':
                 return await this.evaluateExpression(statement.expression);
             default:
@@ -120,6 +122,11 @@ export class Interpreter {
             parameters: statement.parameters,
             body: statement.body
         });
+    }
+
+    async executeReturnStatement(statement) {
+        const value = statement.value ? await this.evaluateExpression(statement.value) : null;
+        throw { type: 'Return', value }; // Use exception for early return
     }
 
     async evaluateExpression(expression) {
@@ -229,9 +236,14 @@ export class Interpreter {
         try {
             let result = null;
             for (const statement of func.body) {
-                result = await this.executeStatement(statement);
+                await this.executeStatement(statement);
             }
             return result;
+        } catch (exception) {
+            if (exception.type === 'Return') {
+                return exception.value;
+            }
+            throw exception; // Re-throw if not a return
         } finally {
             // Restore previous scope
             this.environment = previousEnvironment;
