@@ -5,7 +5,7 @@ export function CodeEditor({
     onChange, 
     onCompile, 
     isCompiling = false,
-    placeholder = "Enter your Code Mantra here...",
+    placeholder = "bawal suru\n\n// Enter your Bawal Code here...\n\nbawal khatam",
     showLineNumbers = true 
 }) {
     const lineCount = value.split('\n').length;

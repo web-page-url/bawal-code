@@ -1,4 +1,4 @@
-// Secure Interpreter for Code Mantra Language
+// Secure Interpreter for Bawal Code Language
 export class Interpreter {
     constructor() {
         this.environment = new Map();

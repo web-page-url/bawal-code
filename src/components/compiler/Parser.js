@@ -1,4 +1,4 @@
-// Parser for Code Mantra Language with proper operator precedence
+// Parser for Bawal Code Language with proper operator precedence
 export class Parser {
     constructor(tokens) {
         this.tokens = tokens;
@@ -6,9 +6,14 @@ export class Parser {
     }
 
     parse() {
+        // Check for program start
+        if (!this.checkProgramStart()) {
+            throw new Error("Program must start with 'bawal suru'");
+        }
+        
         const statements = [];
         
-        while (!this.isAtEnd()) {
+        while (!this.isAtEnd() && !this.isProgramEnd()) {
             try {
                 const stmt = this.parseStatement();
                 if (stmt) statements.push(stmt);
@@ -18,10 +23,43 @@ export class Parser {
             }
         }
         
+        // Check for program end and consume it
+        if (!this.isAtEnd() && !this.checkProgramEnd()) {
+            throw new Error("Program must end with 'bawal khatam'");
+        }
+        
         return {
             type: 'Program',
             body: statements
         };
+    }
+
+    checkProgramStart() {
+        if (this.check('keyword', 'bawal') && 
+            this.tokens[this.current + 1] && 
+            this.tokens[this.current + 1].type === 'keyword' && 
+            this.tokens[this.current + 1].value === 'suru') {
+            this.advance(); // consume 'bawal'
+            this.advance(); // consume 'suru'
+            return true;
+        }
+        return false;
+    }
+
+    isProgramEnd() {
+        return this.check('keyword', 'bawal') && 
+               this.tokens[this.current + 1] && 
+               this.tokens[this.current + 1].type === 'keyword' && 
+               this.tokens[this.current + 1].value === 'khatam';
+    }
+
+    checkProgramEnd() {
+        if (this.isProgramEnd()) {
+            this.advance(); // consume 'bawal'
+            this.advance(); // consume 'khatam'
+            return true;
+        }
+        return false;
     }
 
     parseStatement() {
@@ -38,6 +76,17 @@ export class Parser {
                 case 'agar': return this.parseIfStatement();
                 case 'jabtak': return this.parseWhileStatement();
                 case 'kaam': return this.parseFunctionDeclaration();
+                case 'bawal':
+                    // Check if this is 'bawal khatam' - if so, we've reached the end
+                    if (this.check('keyword', 'khatam')) {
+                        // Back up to let the main parse loop handle this
+                        this.current--;
+                        return null;
+                    }
+                    throw new Error(`Unexpected 'bawal' keyword. Use 'bawal suru' at start and 'bawal khatam' at end.`);
+                case 'suru':
+                case 'khatam':
+                    throw new Error(`Unexpected '${keyword}' keyword. Use 'bawal ${keyword}' for program structure.`);
                 default:
                     throw new Error(`Unknown keyword: ${keyword}`);
             }

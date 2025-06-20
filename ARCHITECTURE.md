@@ -1,8 +1,8 @@
-# Code Mantra v2.0 - Architecture Documentation
+# Bawal Code v2.0 - Architecture Documentation
 
 ## 🏗️ Improved Architecture Overview
 
-The Code Mantra programming language has been completely refactored from a monolithic 600+ line component into a clean, modular, and maintainable architecture. This document outlines the new structure and improvements.
+The Bawal Code programming language has been completely refactored from a monolithic 600+ line component into a clean, modular, and maintainable architecture. This document outlines the new structure and improvements.
 
 ## 📁 Project Structure
 
@@ -277,4 +277,4 @@ The new architecture makes it easy to add:
 6. **User Experience**: Better error messages, loading states, and features
 7. **Developer Experience**: Clean APIs and separation of concerns
 
-This refactored architecture transforms Code Mantra from a proof-of-concept into a production-ready, secure, and maintainable programming language platform. 
+This refactored architecture transforms Bawal Code from a proof-of-concept into a production-ready, secure, and maintainable programming language platform. 

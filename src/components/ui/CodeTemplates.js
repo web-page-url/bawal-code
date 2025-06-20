@@ -8,7 +8,9 @@ const TEMPLATE_CATEGORIES = {
             {
                 name: "Variables & Arithmetic",
                 description: "Learn variable declaration and basic math operations",
-                code: `ye x = 20;
+                code: `bawal suru
+
+ye x = 20;
 ye y = 10;
 ye sum = x + y;
 ye difference = x - y;
@@ -18,18 +20,24 @@ ye division = x / y;
 bol "Sum: " + sum;
 bol "Difference: " + difference;
 bol "Product: " + product;
-bol "Division: " + division;`
+bol "Division: " + division;
+
+bawal khatam`
             },
             {
                 name: "String Operations",
                 description: "Working with text and string concatenation",
-                code: `ye firstName = "Code";
-ye lastName = "Mantra";
+                code: `bawal suru
+
+ye firstName = "Bawal";
+ye lastName = "Code";
 ye greeting = "Hello, ";
 ye fullName = firstName + " " + lastName;
 
 bol greeting + fullName + "!";
-bol "Length of name: " + (firstName + lastName);`
+bol "Combining both name: " + (firstName + lastName);
+
+bawal khatam`
             }
         ]
     },
@@ -40,7 +48,9 @@ bol "Length of name: " + (firstName + lastName);`
             {
                 name: "User Input",
                 description: "Taking input from users and processing it",
-                code: `bol "Please enter your name:";
+                code: `bawal suru
+
+bol "Please enter your name:";
 nivesh userName;
 
 bol "Please enter your age:";
@@ -53,12 +63,16 @@ agar (userAge >= 18) {
     bol "You are an adult!";
 } warna {
     bol "You are a minor.";
-}`
+}
+
+bawal khatam`
             },
             {
                 name: "Calculator",
                 description: "Simple arithmetic calculator",
-                code: `bol "Enter first number:";
+                code: `bawal suru
+
+bol "Enter first number:";
 nivesh num1;
 
 bol "Enter second number:";
@@ -81,7 +95,9 @@ agar (operation == "+") {
     }
 } warna {
     bol "Invalid operation!";
-}`
+}
+
+bawal khatam`
             }
         ]
     },
@@ -92,7 +108,9 @@ agar (operation == "+") {
             {
                 name: "Grade Calculator",
                 description: "Calculate grades based on marks",
-                code: `bol "Enter your marks (0-100):";
+                code: `bawal suru
+
+bol "Enter your marks (0-100):";
 nivesh marks;
 
 agar (marks >= 90) {
@@ -107,12 +125,16 @@ agar (marks >= 90) {
     bol "Grade: D (Below Average)";
 } warna {
     bol "Grade: F (Fail)";
-}`
+}
+
+bawal khatam`
             },
             {
                 name: "Number Comparison",
                 description: "Compare multiple numbers",
-                code: `bol "Enter three numbers:";
+                code: `bawal suru
+
+bol "Enter three numbers:";
 nivesh a;
 nivesh b;
 nivesh c;
@@ -127,7 +149,9 @@ agar (a > b && a > c) {
 
 agar (a == b && b == c) {
     bol "All numbers are equal!";
-}`
+}
+
+bawal khatam`
             }
         ]
     },
@@ -138,7 +162,9 @@ agar (a == b && b == c) {
             {
                 name: "Counting Loop",
                 description: "Basic counting using while loop",
-                code: `ye i = 1;
+                code: `bawal suru
+
+ye i = 1;
 
 bol "Counting from 1 to 10:";
 jabtak (i <= 10) {
@@ -146,12 +172,16 @@ jabtak (i <= 10) {
     ye i = i + 1;
 }
 
-bol "Counting finished!";`
+bol "Counting finished!";
+
+bawal khatam`
             },
             {
                 name: "Multiplication Table",
                 description: "Generate multiplication table",
-                code: `bol "Enter a number for multiplication table:";
+                code: `bawal suru
+
+bol "Enter a number for multiplication table:";
 nivesh num;
 
 ye i = 1;
@@ -161,7 +191,9 @@ jabtak (i <= 10) {
     ye result = num * i;
     bol num + " x " + i + " = " + result;
     ye i = i + 1;
-}`
+}
+
+bawal khatam`
             }
         ]
     },
@@ -172,9 +204,11 @@ jabtak (i <= 10) {
             {
                 name: "Simple Function",
                 description: "Creating and calling functions",
-                code: `kaam greet(name) {
+                code: `bawal suru
+
+kaam greet(name) {
     bol "Hello, " + name + "!";
-    bol "Welcome to Code Mantra!";
+    bol "Welcome to Bawal Code!";
 }
 
 kaam add(a, b) {
@@ -185,12 +219,16 @@ kaam add(a, b) {
 // Calling functions
 greet("Developer");
 add(15, 25);
-add(100, 50);`
+add(100, 50);
+
+bawal khatam`
             },
             {
                 name: "Advanced Functions",
                 description: "Functions with complex logic",
-                code: `kaam isEven(number) {
+                code: `bawal suru
+
+kaam isEven(number) {
     agar (number % 2 == 0) {
         bol number + " is even";
     } warna {
@@ -212,7 +250,9 @@ kaam factorial(n) {
 
 isEven(7);
 isEven(10);
-factorial(5);`
+factorial(5);
+
+bawal khatam`
             }
         ]
     }
