@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap');
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    line-height: 1.6;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(45deg, #4ecca3, #45b393);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-hover:hover {
+    text-shadow: 0 0 8px rgba(78, 204, 163, 0.5);
+  }
+
+  .transform-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Custom scrollbar for editor */
+  .editor-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .editor-scrollbar::-webkit-scrollbar-track {
+    background: #0f3460;
+  }
+
+  .editor-scrollbar::-webkit-scrollbar-thumb {
+    background: #4ecca3;
+    border-radius: 4px;
+  }
+
+  .editor-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #45b393;
+  }
+
+  /* Compile button shine effect */
+  .compile-button-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .compile-button-shine:hover:not(:disabled)::before {
+    left: 100%;
+  }
+
+  /* Template code scrollbar */
+  .template-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .template-scrollbar::-webkit-scrollbar-track {
+    background: #0f3460;
+  }
+
+  .template-scrollbar::-webkit-scrollbar-thumb {
+    background: #4ecca3;
+    border-radius: 3px;
+  }
+}
