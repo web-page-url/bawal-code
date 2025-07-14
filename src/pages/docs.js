@@ -88,7 +88,9 @@ export default function Documentation() {
                 <title>Bawal Code Documentation - Complete Guide</title>
                 <meta name="description" content="Complete documentation for Bawal Code programming language. Learn Hindi-inspired programming with detailed examples and tutorials." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/Bawal-code-1.0.png" />
+                <link rel="apple-touch-icon" href="/Bawal-code-1.0.png" />
+                <link rel="shortcut icon" href="/Bawal-code-1.0.png" />
             </Head>
 
             {/* Header */}

@@ -10,6 +10,7 @@ export default function AIPlayground() {
     const [generatedCode, setGeneratedCode] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
     const [generationError, setGenerationError] = useState(null);
+    const [generationWarning, setGenerationWarning] = useState(null);
     const { output, error, isCompiling, compile, reset } = useCompiler();
 
     const handleGenerate = async () => {
@@ -20,6 +21,7 @@ export default function AIPlayground() {
 
         setIsGenerating(true);
         setGenerationError(null);
+        setGenerationWarning(null);
 
         try {
             const response = await fetch('/api/generate-code', {
@@ -34,6 +36,9 @@ export default function AIPlayground() {
 
             if (response.ok && result.success) {
                 setGeneratedCode(result.code);
+                if (result.warning) {
+                    setGenerationWarning(result.warning);
+                }
                 reset(); // Clear previous output
             } else {
                 setGenerationError(result.error || 'Code generation failed');
@@ -98,7 +103,9 @@ export default function AIPlayground() {
                 <title>AI Playground - Bawal Code</title>
                 <meta name="description" content="Generate Bawal Code using AI! Describe what you want and let AI write the code for you." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/Bawal-code-1.0.png" />
+                <link rel="apple-touch-icon" href="/Bawal-code-1.0.png" />
+                <link rel="shortcut icon" href="/Bawal-code-1.0.png" />
             </Head>
 
             <div className="container mx-auto px-4 py-8 max-w-7xl">
@@ -209,6 +216,19 @@ export default function AIPlayground() {
                                     <div>
                                         <h4 className="text-red-700 font-semibold">Generation Error</h4>
                                         <p className="text-red-600 text-sm">{generationError}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Warning Display */}
+                        {generationWarning && (
+                            <div className="mt-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+                                <div className="flex items-start gap-2">
+                                    <span className="text-yellow-500 text-xl">💡</span>
+                                    <div>
+                                        <h4 className="text-yellow-700 font-semibold">Fallback Mode Active</h4>
+                                        <p className="text-yellow-600 text-sm">{generationWarning}</p>
                                     </div>
                                 </div>
                             </div>

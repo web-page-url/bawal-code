@@ -249,24 +249,52 @@ Generate ONLY Bawal Code based on the user's request. Do not include explanation
       }
     ];
 
-    // Call OpenRouter API
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-        'X-Title': 'Bawal Code AI Playground'
-      },
-      body: JSON.stringify({
-        model: 'deepseek/deepseek-r1-0528-qwen3-8b:free', // You can change this model
-        messages: messages,
-        max_tokens: 1000,
-        temperature: 0.7,
-        top_p: 0.9,
-        stream: false
-      })
-    });
+    // Call OpenRouter API with timeout and retry logic
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
+    let response;
+    let retryCount = 0;
+    const maxRetries = 3;
+
+    while (retryCount < maxRetries) {
+      try {
+        response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+            'X-Title': 'Bawal Code AI Playground',
+            'Connection': 'close' // Prevent connection reuse issues
+          },
+          body: JSON.stringify({
+            model: 'deepseek/deepseek-r1-0528-qwen3-8b:free', // You can change this model
+            messages: messages,
+            max_tokens: 1000,
+            temperature: 0.7,
+            top_p: 0.9,
+            stream: false
+          }),
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        break; // Success, exit retry loop
+        
+      } catch (error) {
+        retryCount++;
+        console.log(`Attempt ${retryCount} failed:`, error.message);
+        
+        if (retryCount >= maxRetries) {
+          clearTimeout(timeoutId);
+          throw new Error(`Failed after ${maxRetries} attempts: ${error.message}`);
+        }
+        
+        // Wait before retrying (exponential backoff)
+        await new Promise(resolve => setTimeout(resolve, 1000 * retryCount));
+      }
+    }
 
     if (!response.ok) {
       const errorData = await response.text();
@@ -309,10 +337,138 @@ Generate ONLY Bawal Code based on the user's request. Do not include explanation
 
   } catch (error) {
     console.error('Code generation error:', error);
-    return res.status(500).json({ 
-      error: 'Internal server error during code generation',
-      success: false,
-      details: error.message 
+    
+    // Provide fallback code when API fails
+    const fallbackCode = generateFallbackCode(prompt);
+    
+    return res.status(200).json({ 
+      success: true,
+      code: fallbackCode,
+      model: 'fallback-template',
+      prompt: prompt.trim(),
+      warning: 'API service temporarily unavailable. Generated template code based on your request.'
     });
   }
-} 
+}
+
+// Fallback code generator for when API is unavailable
+function generateFallbackCode(prompt) {
+  const lowerPrompt = prompt.toLowerCase().trim();
+  
+  // Simple pattern matching for common requests
+  if (lowerPrompt.includes('hello') || lowerPrompt.includes('world') || lowerPrompt.includes('नमस्ते')) {
+    return `bawal suru
+
+ye sandesh = "नमस्ते दुनिया!";
+bol sandesh;
+bol "Bawal Code में आपका स्वागत है!";
+
+bawal khatam`;
+  }
+  
+  if (lowerPrompt.includes('calculator') || lowerPrompt.includes('calc') || lowerPrompt.includes('गणक')) {
+    return `bawal suru
+
+bol "==== Bawal Calculator ====";
+bol "पहली संख्या दर्ज करें:";
+nivesh pehla_sankhya;
+bol "दूसरी संख्या दर्ज करें:";
+nivesh dusra_sankhya;
+bol "गणना चुनें (+, -, *, /):";
+nivesh kaarya;
+
+agar (kaarya == "+") {
+    ye parinaam = pehla_sankhya + dusra_sankhya;
+    bol "परिणाम: " + pehla_sankhya + " + " + dusra_sankhya + " = " + parinaam;
+} warna agar (kaarya == "-") {
+    ye parinaam = pehla_sankhya - dusra_sankhya;
+    bol "परिणाम: " + pehla_sankhya + " - " + dusra_sankhya + " = " + parinaam;
+} warna agar (kaarya == "*") {
+    ye parinaam = pehla_sankhya * dusra_sankhya;
+    bol "परिणाम: " + pehla_sankhya + " × " + dusra_sankhya + " = " + parinaam;
+} warna agar (kaarya == "/") {
+    agar (dusra_sankhya != 0) {
+        ye parinaam = pehla_sankhya / dusra_sankhya;
+        bol "परिणाम: " + pehla_sankhya + " ÷ " + dusra_sankhya + " = " + parinaam;
+    } warna {
+        bol "त्रुटि: शून्य से भाग संभव नहीं!";
+    }
+} warna {
+    bol "गलत गणना! केवल +, -, *, / का उपयोग करें।";
+}
+
+bawal khatam`;
+  }
+  
+  if (lowerPrompt.includes('loop') || lowerPrompt.includes('count') || lowerPrompt.includes('गिनती')) {
+    return `bawal suru
+
+ye ginti = 1;
+bol "1 से 10 तक गिनती:";
+
+jabtak (ginti <= 10) {
+    bol "संख्या: " + ginti;
+    ye ginti = ginti + 1;
+}
+
+bol "गिनती पूरी हो गई!";
+
+bawal khatam`;
+  }
+  
+  if (lowerPrompt.includes('grade') || lowerPrompt.includes('marks') || lowerPrompt.includes('अंक')) {
+    return `bawal suru
+
+bol "अपने अंक दर्ज करें:";
+nivesh ank;
+
+agar (ank >= 90) {
+    bol "श्रेणी: A+ (उत्कृष्ट!)";
+} warna agar (ank >= 80) {
+    bol "श्रेणी: A (बहुत अच्छा!)";
+} warna agar (ank >= 70) {
+    bol "श्रेणी: B (अच्छा!)";
+} warna agar (ank >= 60) {
+    bol "श्रेणी: C (औसत)";
+} warna {
+    bol "श्रेणी: F (अनुत्तीर्ण)";
+}
+
+bawal khatam`;
+  }
+  
+  if (lowerPrompt.includes('function') || lowerPrompt.includes('kaam') || lowerPrompt.includes('कार्य')) {
+    return `bawal suru
+
+kaam abhivadan(naam) {
+    bol "नमस्ते, " + naam + "!";
+    bol "Bawal Code में आपका स्वागत है।";
+}
+
+kaam jod(pehla, dusra) {
+    ye parinaam = pehla + dusra;
+    bol pehla + " + " + dusra + " = " + parinaam;
+    wapis parinaam;
+}
+
+abhivadan("दोस्त");
+ye result = jod(15, 25);
+bol "परिणाम: " + result;
+
+bawal khatam`;
+  }
+  
+  // Default fallback
+  return `bawal suru
+
+// आपके अनुरोध के आधार पर बनाया गया कोड
+ye sandesh = "Bawal Code के साथ प्रोग्रामिंग करें!";
+bol sandesh;
+
+// यहाँ आप अपना कोड लिख सकते हैं
+bol "कृपया अपना नाम दर्ज करें:";
+nivesh naam;
+bol "नमस्ते " + naam + "!";
+
+bawal khatam`;
+}

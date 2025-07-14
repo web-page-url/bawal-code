@@ -6,7 +6,7 @@ import { CodeEditor } from '../components/ui/CodeEditor';
 import { OutputDisplay } from '../components/ui/OutputDisplay';
 import { CodeTemplates } from '../components/ui/CodeTemplates';
 
-function CodeMantraCompiler() {
+function BawalCodeCompiler() {
     const [input, setInput] = useState('');
     const { output, error, isCompiling, compile, reset } = useCompiler();
 
@@ -64,14 +64,24 @@ function CodeMantraCompiler() {
                 <meta property="og:title" content="Bawal Code Programming Language" />
                 <meta property="og:description" content="Discover Bawal Code, the innovative programming language inspired by Hindi. Write intuitive code and bring your ideas to life!" />
                 <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://bawal-code.vercel.app" />
+                <meta property="og:image" content="/Bawal-code-1.0.png" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="Bawal Code - Hindi Programming Language" />
                 <meta property="og:locale" content="en_US" />
 
                 {/* Twitter Card Meta Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Bawal Code Programming Language" />
                 <meta name="twitter:description" content="Learn programming with Hindi-inspired keywords. Bawal Code makes programming accessible and intuitive." />
+                <meta name="twitter:image" content="/Bawal-code-1.0.png" />
+                <meta name="twitter:image:alt" content="Bawal Code - Hindi Programming Language" />
 
-                <link rel="icon" href="/favicon.ico" />
+                {/* Favicon */}
+                <link rel="icon" href="/Bawal-code-1.0.png" />
+                <link rel="apple-touch-icon" href="/Bawal-code-1.0.png" />
+                <link rel="shortcut icon" href="/Bawal-code-1.0.png" />
 
                 {/* Preload important fonts */}
                 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" as="style" />
@@ -174,5 +184,5 @@ bawal khatam"
     );
 }
 
-export default CodeMantraCompiler;
+export default BawalCodeCompiler;
 

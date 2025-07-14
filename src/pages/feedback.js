@@ -101,7 +101,9 @@ export default function FeedbackPage() {
                 <title>Feedback - Bawal Code Programming Language</title>
                 <meta name="description" content="Share your feedback and views about Bawal Code programming language. Help us improve!" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/Bawal-code-1.0.png" />
+                <link rel="apple-touch-icon" href="/Bawal-code-1.0.png" />
+                <link rel="shortcut icon" href="/Bawal-code-1.0.png" />
             </Head>
 
             <div className="container mx-auto px-4 py-8 max-w-4xl">
