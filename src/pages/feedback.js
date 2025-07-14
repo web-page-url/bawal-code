@@ -101,6 +101,37 @@ export default function FeedbackPage() {
                 <title>Feedback - Bawal Code Programming Language</title>
                 <meta name="description" content="Share your feedback and views about Bawal Code programming language. Help us improve!" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="keywords" content="Bawal Code feedback, programming language review, Hindi coding feedback, user experience, community feedback" />
+                <meta name="author" content="Anubhav Chaudhary" />
+                <meta name="robots" content="index, follow" />
+
+                {/* Open Graph Meta Tags for Facebook, WhatsApp */}
+                <meta property="og:title" content="Share Your Feedback - Bawal Code Programming Language" />
+                <meta property="og:description" content="Help us improve Bawal Code! Share your experience with our Hindi-inspired programming language and contribute to making programming more accessible." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://bawal-code.vercel.app/feedback" />
+                <meta property="og:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="Share Your Feedback - Bawal Code Programming Language" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="og:site_name" content="Bawal Code" />
+
+                {/* Twitter Card Meta Tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Share Your Feedback - Bawal Code Programming Language" />
+                <meta name="twitter:description" content="Join our community! Share your thoughts about Bawal Code and help us make Hindi programming even better." />
+                <meta name="twitter:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta name="twitter:image:alt" content="Share Your Feedback - Bawal Code Programming Language" />
+                <meta name="twitter:site" content="@BawalCode" />
+                <meta name="twitter:creator" content="@AnubhavChaudhary" />
+
+                {/* Additional meta tags for better sharing */}
+                <meta property="article:author" content="Anubhav Chaudhary" />
+                <meta property="article:section" content="Community" />
+                <meta property="article:tag" content="Bawal Code, Feedback, Community, Programming, Hindi, User Experience" />
+
+                {/* Favicon */}
                 <link rel="icon" href="/Bawal-code-1.0.png" />
                 <link rel="apple-touch-icon" href="/Bawal-code-1.0.png" />
                 <link rel="shortcut icon" href="/Bawal-code-1.0.png" />

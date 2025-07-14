@@ -57,26 +57,34 @@ function BawalCodeCompiler() {
                 <meta name="description" content="Bawal Code: A Hindi-inspired programming language for intuitive coding. Learn programming with familiar Hindi keywords." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="keywords" content="Bawal Code, programming language, Hindi coding, software development, learn to code, Indian tech, education" />
-                <meta name="author" content="Bawal Code Development Team" />
+                <meta name="author" content="Anubhav Chaudhary" />
                 <meta name="robots" content="index, follow" />
 
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="Bawal Code Programming Language" />
-                <meta property="og:description" content="Discover Bawal Code, the innovative programming language inspired by Hindi. Write intuitive code and bring your ideas to life!" />
+                {/* Open Graph Meta Tags for Facebook, WhatsApp */}
+                <meta property="og:title" content="Bawal Code - Hindi Programming Language" />
+                <meta property="og:description" content="Discover Bawal Code, the revolutionary programming language inspired by Hindi! Write intuitive code with familiar Hindi keywords and bring your ideas to life." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://bawal-code.vercel.app" />
-                <meta property="og:image" content="/Bawal-code-1.0.png" />
+                <meta property="og:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
-                <meta property="og:image:alt" content="Bawal Code - Hindi Programming Language" />
+                <meta property="og:image:alt" content="Bawal Code - Revolutionary Hindi Programming Language" />
                 <meta property="og:locale" content="en_US" />
+                <meta property="og:site_name" content="Bawal Code" />
 
                 {/* Twitter Card Meta Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Bawal Code Programming Language" />
-                <meta name="twitter:description" content="Learn programming with Hindi-inspired keywords. Bawal Code makes programming accessible and intuitive." />
-                <meta name="twitter:image" content="/Bawal-code-1.0.png" />
-                <meta name="twitter:image:alt" content="Bawal Code - Hindi Programming Language" />
+                <meta name="twitter:title" content="Bawal Code - Hindi Programming Language" />
+                <meta name="twitter:description" content="Revolutionary programming language with Hindi keywords! Learn coding in your native language and make programming accessible to everyone." />
+                <meta name="twitter:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta name="twitter:image:alt" content="Bawal Code - Revolutionary Hindi Programming Language" />
+                <meta name="twitter:site" content="@BawalCode" />
+                <meta name="twitter:creator" content="@AnubhavChaudhary" />
+
+                {/* Additional meta tags for better sharing */}
+                <meta property="article:author" content="Anubhav Chaudhary" />
+                <meta property="article:section" content="Programming Language" />
+                <meta property="article:tag" content="Bawal Code, Hindi Programming, Indian Tech, Native Language Coding, Programming Education" />
 
                 {/* Favicon */}
                 <link rel="icon" href="/Bawal-code-1.0.png" />

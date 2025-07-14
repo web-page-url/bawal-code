@@ -88,6 +88,37 @@ export default function Documentation() {
                 <title>Bawal Code Documentation - Complete Guide</title>
                 <meta name="description" content="Complete documentation for Bawal Code programming language. Learn Hindi-inspired programming with detailed examples and tutorials." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="keywords" content="Bawal Code documentation, Hindi programming tutorial, programming guide, learn coding in Hindi, Bawal Code syntax" />
+                <meta name="author" content="Anubhav Chaudhary" />
+                <meta name="robots" content="index, follow" />
+
+                {/* Open Graph Meta Tags for Facebook, WhatsApp */}
+                <meta property="og:title" content="Bawal Code Documentation - Complete Programming Guide" />
+                <meta property="og:description" content="Master Bawal Code with our comprehensive documentation! Learn Hindi-inspired programming with detailed examples, tutorials, and syntax guides." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://bawal-code.vercel.app/docs" />
+                <meta property="og:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="Bawal Code Documentation - Learn Programming in Hindi" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="og:site_name" content="Bawal Code" />
+
+                {/* Twitter Card Meta Tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Bawal Code Documentation - Complete Programming Guide" />
+                <meta name="twitter:description" content="Comprehensive documentation for Bawal Code. Learn programming with Hindi keywords through detailed examples and tutorials." />
+                <meta name="twitter:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta name="twitter:image:alt" content="Bawal Code Documentation - Learn Programming in Hindi" />
+                <meta name="twitter:site" content="@BawalCode" />
+                <meta name="twitter:creator" content="@AnubhavChaudhary" />
+
+                {/* Additional meta tags for better sharing */}
+                <meta property="article:author" content="Anubhav Chaudhary" />
+                <meta property="article:section" content="Programming Documentation" />
+                <meta property="article:tag" content="Bawal Code, Programming, Hindi, Documentation, Tutorial, Guide" />
+
+                {/* Favicon */}
                 <link rel="icon" href="/Bawal-code-1.0.png" />
                 <link rel="apple-touch-icon" href="/Bawal-code-1.0.png" />
                 <link rel="shortcut icon" href="/Bawal-code-1.0.png" />

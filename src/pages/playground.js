@@ -103,6 +103,37 @@ export default function AIPlayground() {
                 <title>AI Playground - Bawal Code</title>
                 <meta name="description" content="Generate Bawal Code using AI! Describe what you want and let AI write the code for you." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="keywords" content="Bawal Code, AI code generator, Hindi programming, automated coding, AI playground, programming assistant" />
+                <meta name="author" content="Anubhav Chaudhary" />
+                <meta name="robots" content="index, follow" />
+
+                {/* Open Graph Meta Tags for Facebook, WhatsApp */}
+                <meta property="og:title" content="AI Playground - Bawal Code Programming Language" />
+                <meta property="og:description" content="Generate Bawal Code using AI! Simply describe what you want in plain English or Hindi, and our AI will write the complete Bawal Code for you." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://bawal-code.vercel.app/playground" />
+                <meta property="og:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="AI Playground - Generate Bawal Code with AI" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="og:site_name" content="Bawal Code" />
+
+                {/* Twitter Card Meta Tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="AI Playground - Bawal Code Programming Language" />
+                <meta name="twitter:description" content="Generate Bawal Code using AI! Describe your program idea and get instant Hindi-based code." />
+                <meta name="twitter:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta name="twitter:image:alt" content="AI Playground - Generate Bawal Code with AI" />
+                <meta name="twitter:site" content="@BawalCode" />
+                <meta name="twitter:creator" content="@AnubhavChaudhary" />
+
+                {/* Additional meta tags for better sharing */}
+                <meta property="article:author" content="Anubhav Chaudhary" />
+                <meta property="article:section" content="Programming" />
+                <meta property="article:tag" content="Bawal Code, AI, Programming, Hindi, Code Generation" />
+
+                {/* Favicon */}
                 <link rel="icon" href="/Bawal-code-1.0.png" />
                 <link rel="apple-touch-icon" href="/Bawal-code-1.0.png" />
                 <link rel="shortcut icon" href="/Bawal-code-1.0.png" />

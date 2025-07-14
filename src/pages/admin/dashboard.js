@@ -160,6 +160,37 @@ export default function AdminDashboard() {
                 <title>Admin Dashboard - Bawal Code Feedback</title>
                 <meta name="description" content="Admin dashboard to view user feedback for Bawal Code" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="keywords" content="Bawal Code admin, dashboard, feedback management, analytics, user statistics" />
+                <meta name="author" content="Anubhav Chaudhary" />
+                <meta name="robots" content="noindex, nofollow" />
+
+                {/* Open Graph Meta Tags for Facebook, WhatsApp */}
+                <meta property="og:title" content="Admin Dashboard - Bawal Code Management" />
+                <meta property="og:description" content="Administrative interface for managing Bawal Code user feedback and analytics." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://bawal-code.vercel.app/admin/dashboard" />
+                <meta property="og:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="Admin Dashboard - Bawal Code Management" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="og:site_name" content="Bawal Code" />
+
+                {/* Twitter Card Meta Tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Admin Dashboard - Bawal Code Management" />
+                <meta name="twitter:description" content="Administrative interface for Bawal Code feedback and user management." />
+                <meta name="twitter:image" content="https://bawal-code.vercel.app/Bawal-code-1.0.png" />
+                <meta name="twitter:image:alt" content="Admin Dashboard - Bawal Code Management" />
+                <meta name="twitter:site" content="@BawalCode" />
+                <meta name="twitter:creator" content="@AnubhavChaudhary" />
+
+                {/* Additional meta tags for better sharing */}
+                <meta property="article:author" content="Anubhav Chaudhary" />
+                <meta property="article:section" content="Administration" />
+                <meta property="article:tag" content="Bawal Code, Admin, Dashboard, Management, Analytics" />
+
+                {/* Favicon */}
                 <link rel="icon" href="/Bawal-code-1.0.png" />
                 <link rel="apple-touch-icon" href="/Bawal-code-1.0.png" />
                 <link rel="shortcut icon" href="/Bawal-code-1.0.png" />
