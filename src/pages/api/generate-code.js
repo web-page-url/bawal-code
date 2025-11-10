@@ -269,7 +269,10 @@ Generate ONLY Bawal Code based on the user's request. Do not include explanation
             'Connection': 'close' // Prevent connection reuse issues
           },
           body: JSON.stringify({
-            model: 'deepseek/deepseek-r1-0528-qwen3-8b:free', // You can change this model
+          //  model: 'deepseek/deepseek-r1-0528-qwen3-8b:free', // You can change this model
+            model: 'z-ai/glm-4.5-air:free', // You can change this model
+//z-ai/glm-4.5-air:free, qwen/qwen3-coder:free
+            
             messages: messages,
             max_tokens: 1000,
             temperature: 0.7,
