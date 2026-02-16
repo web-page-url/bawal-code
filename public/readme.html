@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture & Working - Bawal Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1a1a2e;
+            --surface-color: #16213e;
+            --surface-light: #0f3460;
+            --primary-color: #4ecca3;
+            --primary-dark: #45b393;
+            --accent-color: #e94560;
+            --text-primary: #e0e0e0;
+            --text-secondary: #94a3b8;
+            --font-main: 'Outfit', sans-serif;
+            --font-code: 'Fira Code', monospace;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --glass: rgba(22, 33, 62, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Aesthetics & Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(78, 204, 163, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(233, 69, 96, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(78, 204, 163, 0.3));
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        section {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(78, 204, 163, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: scaleIn 0.8s ease-out backwards;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(78, 204, 163, 0.3);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            items-center: center;
+            gap: 1rem;
+        }
+
+        h2 span {
+            font-size: 2.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Pipeline Visuals */
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            background: var(--surface-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            position: relative;
+        }
+
+        .step h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .step::after {
+            content: '↓';
+            position: absolute;
+            bottom: -1.75rem;
+            left: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: #0d1117;
+            padding: 1.5rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+            border: 1px solid #30363d;
+            color: #d1d5db;
+        }
+
+        .keyword {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .string {
+            color: #a5d6ff;
+        }
+
+        .comment {
+            color: #8b949e;
+            font-style: italic;
+        }
+
+        /* Tech Badges */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-card {
+            background: var(--surface-light);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(78, 204, 163, 0.1);
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--surface-light);
+            border-radius: 5px;
+            border: 2px solid var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+
+    <div class="container">
+        <header>
+            <h1>Bawal Code</h1>
+            <p class="subtitle">Inside the Engine — Architecture & Execution</p>
+        </header>
+
+        <section style="animation-delay: 0.1s;">
+            <h2><span>🚀</span> What is Bawal Code?</h2>
+            <p>
+                <strong>Bawal Code</strong> is a custom, Hindi-inspired high-level programming language designed to make
+                coding more accessible and expressive.
+                Unlike simple transpilers, it features a fully custom-built compiler stack comprising a
+                recursive-descent parser and a secure runtime interpreter.
+            </p>
+            <p>
+                The primary goal is to provide a complete development environment — from a web-based playground to a
+                standalone <strong>NPM Package</strong> for CLI execution.
+            </p>
+        </section>
+
+        <section style="animation-delay: 0.2s;">
+            <h2><span>⚙️</span> The Execution Pipeline</h2>
+            <p>When you press "Compile" or run a <code
+                    style="color:var(--primary-color);font-family:var(--font-code)">.bawal</code> file, your code
+                travels through these distinct phases:</p>
+
+            <div class="pipeline">
+                <div class="step">
+                    <h3>1. Lexical Analysis (Lexer)</h3>
+                    <p>The raw text is broken down into <strong>Tokens</strong>. It recognizes keywords (<em>kaam, agar,
+                            bol</em>), operators (<em>+, -, ==</em>), and literals while tracking line/column numbers
+                        for accurate error reporting.</p>
+                </div>
+                <div class="step">
+                    <h3>2. Syntax Analysis (Parser)</h3>
+                    <p>Tokens are structured into an <strong>Abstract Syntax Tree (AST)</strong>. Our parser uses
+                        <strong>Operator Precedence</strong> (BODMAS) to ensure expressions like <code
+                            style="color:var(--primary-color)">2 + 3 * 4</code> result in <code
+                            style="color:var(--primary-color)">14</code>, not <code
+                            style="color:var(--primary-color)">20</code>.</p>
+                </div>
+                <div class="step">
+                    <h3>3. Programmatic Execution (Interpreter)</h3>
+                    <p>The interpreter traverses the AST node-by-node. It maintains its own <strong>Environment
+                            (Scope)</strong> for variables and functions, executing logic directly using JavaScript's
+                        native capabilities but <em>without</em> using dangerous tools like <code
+                            style="color:var(--accent-color);font-family:var(--font-code)">eval()</code>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="animation-delay: 0.3s;">
+            <h2><span>🛡️</span> Security & Sandboxing</h2>
+            <p>Security is the backbone of Bawal Code. Since it runs in the browser and on user machines via NPM, we
+                implemented strict sandboxing:</p>
+            <ul style="list-style: none; margin-left: 0.5rem; color: var(--text-secondary);">
+                <li style="margin-bottom: 0.8rem;">🚫 <strong>No eval()</strong>: The language is interpreted, not
+                    evaluated as raw JS string.</li>
+                <li style="margin-bottom: 0.8rem;">⏱️ <strong>Execution Limits</strong>: Programs have a 5-second
+                    timeout to prevent CPU hang.</li>
+                <li style="margin-bottom: 0.8rem;">🔄 <strong>Loop Protection</strong>: Infinite loops are caught after
+                    1000 iterations.</li>
+                <li style="margin-bottom: 0.8rem;">🔒 <strong>No Global Access</strong>: The interpreter cannot access
+                    the <code>window</code> or <code>document</code> objects.</li>
+            </ul>
+        </section>
+
+        <section style="animation-delay: 0.4s;">
+            <h2><span>📦</span> Distribution & NPM</h2>
+            <p>We've packaged the entire core into a high-performance library distributed via NPM as <code
+                    style="color:var(--primary-color)">@anubhav_codes/bawal-code</code>.</p>
+            <pre>
+<span class="comment">// Global Installation for CLI</span>
+$ npm install -g @anubhav_codes/bawal-code
+
+<span class="comment">// Run any file</span>
+$ bawal main.bawal
+            </pre>
+            <p>The package is built using <strong>tsup</strong>, supporting ESM, CommonJS, and providing full TypeScript
+                definitions (d.ts) for a premium developer experience.</p>
+        </section>
+
+        <section style="animation-delay: 0.5s;">
+            <h2><span>🛠️</span> Tech Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-card">Next.js 15</div>
+                <div class="tech-card">React 19</div>
+                <div class="tech-card">Tailwind CSS</div>
+                <div class="tech-card">Supabase</div>
+                <div class="tech-card">tsup</div>
+                <div class="tech-card">Node.js</div>
+                <div class="tech-card">Vercel</div>
+                <div class="tech-card">NPM</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Created with ❤️ by <strong>Anubhav Chaudhary</strong></p>
+            <p style="margin-top: 1rem;">
+                <a href="/">Go to Playground</a> &bull;
+                <a href="/docs">Read Documentation</a> &bull;
+                <a href="/npm">NPM Guide</a>
+            </p>
+            <p style="margin-top: 2rem; font-size: 0.75rem; opacity: 0.5;">&copy; 2026 Bawal Code. All logic strictly
+                custom-built.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
