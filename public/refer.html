@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bawal Code - Reference Guide</title>
+    <style>
+        :root {
+            --primary: #4ecca3;
+            --bg: #1a1a2e;
+            --surface: #16213e;
+            --text: #e0e0e0;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .container {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 30px;
+        }
+
+        code {
+            background: #0f172a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+        }
+
+        pre {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary);
+        }
+
+        .folder-structure {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .folder-structure li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .folder-structure li::before {
+            content: "📁";
+            position: absolute;
+            left: -5px;
+        }
+
+        .file::before {
+            content: "📄" !important;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .step {
+            background: rgba(78, 204, 163, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 Bawal Code Project Reference</h1>
+        <p>This guide explains the new hybrid structure of your project: a <strong>Next.js Website</strong> and a
+            <strong>Standalone npm Package</strong>.</p>
+
+        <h2>📁 New Project Structure</h2>
+        <ul class="folder-structure">
+            <li><span class="highlight">src/</span> — Contains all your Next.js frontend code, styles, and website
+                logic.</li>
+            <li><span class="highlight">bawal-pkg/</span> — Your <strong>standalone compiler library</strong>. This is
+                where the npm package lives.
+                <ul>
+                    <li class="file"><code>src/index.js</code> — The entry point that exports Lexer, Parser, and
+                        Interpreter.</li>
+                    <li class="file"><code>tsup.config.ts</code> — Build configuration for generating ESM and CJS
+                        bundles.</li>
+                    <li class="file"><code>package.json</code> — Metadata for the npm registry.</li>
+                </ul>
+            </li>
+            <li><span class="highlight">test-pkg-usage/</span> — A safe playground to verify if the built package works
+                correctly.</li>
+        </ul>
+
+        <h2>📦 How to Publish your npm Package</h2>
+        <div class="step">
+            <strong>Step 1: Navigate to the package folder</strong>
+            <pre>cd bawal-pkg</pre>
+        </div>
+        <div class="step">
+            <strong>Step 2: Build the distribution files</strong>
+            <p>This generates the <code>dist/</code> folder containing minified code and types.</p>
+            <pre>npm run build</pre>
+        </div>
+        <div class="step">
+            <strong>Step 3: Update version (if needed)</strong>
+            <p>If you've published before, increment the version in <code>package.json</code> or run:</p>
+            <pre>npm version patch</pre>
+        </div>
+        <div class="step">
+            <strong>Step 4: Push to npm</strong>
+            <pre>npm publish</pre>
+        </div>
+
+        <h2>🛠️ Testing Locally</h2>
+        <p>Before publishing, you can link the package to test it in other projects on your machine:</p>
+        <pre>
+// Inside bawal-pkg/
+npm link
+
+// Inside another project/
+npm link bawal-code
+        </pre>
+
+        <p style="margin-top: 40px; text-align: center; color: var(--text-dim);">
+            <em>Made with ❤️ by Anubhav Chaudhary</em>
+        </p>
+    </div>
+</body>
+
+</html>

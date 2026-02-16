@@ -1,0 +1,15 @@
+bawal suru
+
+ye pehla_sankhya = 20;
+ye dusra_sankhya = 10;
+ye jod = pehla_sankhya + dusra_sankhya;
+ye antar = pehla_sankhya - dusra_sankhya;
+ye gunafal = pehla_sankhya * dusra_sankhya;
+ye bhag = pehla_sankhya / dusra_sankhya;
+
+bol "जोड़: " + jod;
+bol "अंतर: " + antar;
+bol "गुणफल: " + gunafal;
+bol "भाग: " + bhag;
+
+bawal khatam
