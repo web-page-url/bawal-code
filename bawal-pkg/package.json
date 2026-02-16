@@ -1,6 +1,6 @@
 {
     "name": "@anubhav_codes/bawal-code",
-    "version": "1.1.0",
+    "version": "1.0.0",
     "description": "A Hindi-inspired programming language compiler featuring Lexer, Parser, and Interpreter.",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
@@ -8,9 +8,6 @@
     "files": [
         "dist"
     ],
-    "bin": {
-        "bawal": "./dist/cli.js"
-    },
     "publishConfig": {
         "access": "public"
     },

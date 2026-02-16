@@ -25,11 +25,10 @@ const CodeBlock = ({ children, title, description }) => {
                     </div>
                     <button
                         onClick={copyToClipboard}
-                        className={`px-3 py-1.5 rounded transition-all duration-300 text-sm font-bold ${
-                            copied 
-                                ? 'bg-green-500 text-white' 
-                                : 'bg-background text-primary hover:bg-gray-100'
-                        }`}
+                        className={`px-3 py-1.5 rounded transition-all duration-300 text-sm font-bold ${copied
+                            ? 'bg-green-500 text-white'
+                            : 'bg-background text-primary hover:bg-gray-100'
+                            }`}
                     >
                         {copied ? '✓ कॉपी हो गया!' : '📋 कॉपी करें'}
                     </button>
@@ -79,7 +78,9 @@ export default function Documentation() {
         { id: 'functions', title: 'फ़ंक्शन (Functions)', icon: '⚡' },
         { id: 'input-output', title: 'इनपुट/आउटपुट (Input/Output)', icon: '💬' },
         { id: 'examples', title: 'उदाहरण (Examples)', icon: '📚' },
+        { id: 'npm-pkg', title: 'NPM पैकेज (NPM Package)', icon: '📦' },
         { id: 'best-practices', title: 'बेस्ट प्रैक्टिसेज (Best Practices)', icon: '✨' }
+
     ];
 
     return (
@@ -131,7 +132,7 @@ export default function Documentation() {
                         <span className="text-2xl font-bold">← Bawal Code</span>
                     </Link>
                     <h1 className="text-xl md:text-2xl font-bold text-primary hidden sm:block">Documentation</h1>
-                    <button 
+                    <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         className="lg:hidden bg-primary text-background px-3 py-2 rounded font-bold"
                     >
@@ -154,11 +155,10 @@ export default function Documentation() {
                                         setActiveSection(item.id);
                                         setMobileMenuOpen(false);
                                     }}
-                                    className={`flex items-center gap-2 px-3 py-2 rounded transition-all duration-300 text-sm ${
-                                        activeSection === item.id 
-                                            ? 'bg-primary text-background' 
-                                            : 'text-text-primary hover:bg-primary/10 hover:text-primary'
-                                    }`}
+                                    className={`flex items-center gap-2 px-3 py-2 rounded transition-all duration-300 text-sm ${activeSection === item.id
+                                        ? 'bg-primary text-background'
+                                        : 'text-text-primary hover:bg-primary/10 hover:text-primary'
+                                        }`}
                                 >
                                     <span>{item.icon}</span>
                                     <span className="text-xs">{item.title}</span>
@@ -180,11 +180,10 @@ export default function Documentation() {
                                     <a
                                         href={`#${item.id}`}
                                         onClick={() => setActiveSection(item.id)}
-                                        className={`flex items-center gap-3 px-3 py-2 rounded transition-all duration-300 ${
-                                            activeSection === item.id 
-                                                ? 'bg-primary text-background' 
-                                                : 'text-text-primary hover:bg-primary/10 hover:text-primary'
-                                        }`}
+                                        className={`flex items-center gap-3 px-3 py-2 rounded transition-all duration-300 ${activeSection === item.id
+                                            ? 'bg-primary text-background'
+                                            : 'text-text-primary hover:bg-primary/10 hover:text-primary'
+                                            }`}
                                     >
                                         <span>{item.icon}</span>
                                         <span className="text-sm">{item.title}</span>
@@ -201,7 +200,7 @@ export default function Documentation() {
                     <Section id="intro" icon="🇮🇳" title="Bawal Code Documentation" gradient={true}>
                         <div className="text-lg text-text-secondary mb-8 leading-relaxed">
                             <p className="mb-4">
-                                <strong className="text-primary">Bawal Code</strong> एक revolutionary programming language है जो Hindi keywords का उपयोग करती है। 
+                                <strong className="text-primary">Bawal Code</strong> एक revolutionary programming language है जो Hindi keywords का उपयोग करती है।
                                 यह programming को भारतीय developers के लिए अधिक accessible और intuitive बनाती है।
                             </p>
                             <p className="mb-6">
@@ -210,21 +209,21 @@ export default function Documentation() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <FeatureCard 
-                                icon="🇮🇳" 
-                                title="Hindi Keywords" 
+                            <FeatureCard
+                                icon="🇮🇳"
+                                title="Hindi Keywords"
                                 description="प्रोग्रामिंग के लिए हिंदी शब्दों का उपयोग करें"
                                 example="ye naam = 'राम';"
                             />
-                            <FeatureCard 
-                                icon="⚡" 
-                                title="Fast Execution" 
+                            <FeatureCard
+                                icon="⚡"
+                                title="Fast Execution"
                                 description="तुरंत code execute करें और results देखें"
                                 example="bol 'Hello World!';"
                             />
-                            <FeatureCard 
-                                icon="🛡️" 
-                                title="Safe & Secure" 
+                            <FeatureCard
+                                icon="🛡️"
+                                title="Safe & Secure"
                                 description="Built-in security के साथ safe programming"
                                 example="bawal suru ... bawal khatam"
                             />
@@ -234,15 +233,15 @@ export default function Documentation() {
                     {/* Getting Started */}
                     <Section id="getting-started" icon="🚀" title="शुरुआत कैसे करें">
                         <p className="text-lg text-text-secondary mb-6">
-                            Bawal Code program हमेशा <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">bawal suru</code> से शुरू होता है 
+                            Bawal Code program हमेशा <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">bawal suru</code> से शुरू होता है
                             और <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">bawal khatam</code> पर समाप्त होता है।
                         </p>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Basic Program Structure"
                             description="हर Bawal Code program का basic structure"
                         >
-{`bawal suru
+                            {`bawal suru
 
 // यहाँ आपका code लिखें
 ye sandesh = 'नमस्ते दुनिया!';
@@ -265,11 +264,11 @@ bawal khatam`}
                             Variables data store करने के लिए उपयोग होते हैं। Bawal Code में <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">ye</code> keyword का उपयोग करके variables बनाते हैं।
                         </p>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Variable Declaration"
                             description="विभिन्न प्रकार के variables बनाना"
                         >
-{`bawal suru
+                            {`bawal suru
 
 // Text (String) variables
 ye naam = 'अनुभव';
@@ -295,12 +294,12 @@ bawal khatam`}
                             <div className="bg-surface border border-primary rounded-lg p-4">
                                 <h4 className="font-bold text-primary mb-3">✅ सही तरीका</h4>
                                 <pre className="text-sm font-code text-green-600">ye naam = 'राम';
-ye sankhya = 100;</pre>
+                                    ye sankhya = 100;</pre>
                             </div>
                             <div className="bg-surface border border-red-500 rounded-lg p-4">
                                 <h4 className="font-bold text-red-500 mb-3">❌ गलत तरीका</h4>
                                 <pre className="text-sm font-code text-red-500">naam = 'राम'; // 'ye' missing
-var sankhya = 100; // Wrong keyword</pre>
+                                    var sankhya = 100; // Wrong keyword</pre>
                             </div>
                         </div>
                     </Section>
@@ -315,7 +314,7 @@ var sankhya = 100; // Wrong keyword</pre>
                             <div>
                                 <h3 className="text-xl font-bold text-primary mb-4">Arithmetic Operators</h3>
                                 <CodeBlock title="गणितीय संचालन">
-{`bawal suru
+                                    {`bawal suru
 
 ye a = 10;
 ye b = 5;
@@ -337,7 +336,7 @@ bawal khatam`}
                             <div>
                                 <h3 className="text-xl font-bold text-primary mb-4">Comparison Operators</h3>
                                 <CodeBlock title="तुलना संचालन">
-{`bawal suru
+                                    {`bawal suru
 
 ye x = 10;
 ye y = 20;
@@ -358,15 +357,15 @@ bawal khatam`}
                     {/* Conditions */}
                     <Section id="conditions" icon="🔀" title="शर्तें (Conditional Statements)">
                         <p className="text-lg text-text-secondary mb-6">
-                            Decision making के लिए <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">agar</code> (if) 
+                            Decision making के लिए <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">agar</code> (if)
                             और <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">warna</code> (else) का उपयोग करते हैं।
                         </p>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="If-Else Statement"
                             description="Age checker program"
                         >
-{`bawal suru
+                            {`bawal suru
 
 ye umar = 18;
 
@@ -381,11 +380,11 @@ agar (umar >= 18) {
 bawal khatam`}
                         </CodeBlock>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Multiple Conditions"
                             description="Grade calculator with multiple conditions"
                         >
-{`bawal suru
+                            {`bawal suru
 
 ye ank = 85;
 
@@ -411,11 +410,11 @@ bawal khatam`}
                             Repetitive tasks के लिए <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">jabtak</code> (while) loop का उपयोग करते हैं।
                         </p>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="While Loop"
                             description="1 से 10 तक counting"
                         >
-{`bawal suru
+                            {`bawal suru
 
 ye ginti = 1;
 
@@ -430,11 +429,11 @@ bol "गिनती पूरी हो गई!";
 bawal khatam`}
                         </CodeBlock>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Multiplication Table"
                             description="किसी भी संख्या का पहाड़ा"
                         >
-{`bawal suru
+                            {`bawal suru
 
 ye sankhya = 7;
 ye ginti = 1;
@@ -456,11 +455,11 @@ bawal khatam`}
                             Code को reusable बनाने के लिए <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">kaam</code> keyword का उपयोग करके functions बनाते हैं।
                         </p>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Simple Function"
                             description="Basic function definition और calling"
                         >
-{`bawal suru
+                            {`bawal suru
 
 // Function definition
 kaam abhivadan(naam) {
@@ -484,11 +483,11 @@ bol "परिणाम: " + result;
 bawal khatam`}
                         </CodeBlock>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Advanced Function"
                             description="Complex logic के साथ function"
                         >
-{`bawal suru
+                            {`bawal suru
 
 kaam factorial(sankhya) {
     ye parinaam = 1;
@@ -522,15 +521,15 @@ bawal khatam`}
                     {/* Input Output */}
                     <Section id="input-output" icon="💬" title="इनपुट/आउटपुट (Input/Output)">
                         <p className="text-lg text-text-secondary mb-6">
-                            User से input लेने के लिए <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">nivesh</code> 
+                            User से input लेने के लिए <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">nivesh</code>
                             और output show करने के लिए <code className="bg-primary/20 px-2 py-1 rounded text-primary font-code">bol</code> का उपयोग करते हैं।
                         </p>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="User Input Example"
                             description="User से information लेना"
                         >
-{`bawal suru
+                            {`bawal suru
 
 bol "कृपया अपना नाम दर्ज करें:";
 nivesh naam;
@@ -550,11 +549,11 @@ agar (umar >= 18) {
 bawal khatam`}
                         </CodeBlock>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Interactive Calculator"
                             description="User-friendly calculator"
                         >
-{`bawal suru
+                            {`bawal suru
 
 bol "==== Bawal Calculator ====";
 bol "पहली संख्या दर्ज करें:";
@@ -596,11 +595,11 @@ bawal khatam`}
                             यहाँ कुछ complete programs हैं जो real-world problems को solve करते हैं।
                         </p>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Number Guessing Game"
                             description="एक मजेदार number guessing game"
                         >
-{`bawal suru
+                            {`bawal suru
 
 ye secret_number = 7;
 ye attempts = 0;
@@ -639,11 +638,11 @@ agar (attempts == max_attempts) {
 bawal khatam`}
                         </CodeBlock>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Student Grade Manager"
                             description="Student के marks manage करने का system"
                         >
-{`bawal suru
+                            {`bawal suru
 
 bol "📚 Student Grade Management System";
 bol "छात्र का नाम दर्ज करें:";
@@ -688,7 +687,40 @@ bawal khatam`}
                         </CodeBlock>
                     </Section>
 
+                    {/* NPM Package Section */}
+                    <Section id="npm-pkg" icon="📦" title="NPM Package (NPM पैकेज)">
+                        <div className="bg-primary/10 border border-primary rounded-2xl p-8 mb-8">
+                            <h3 className="text-2xl font-bold text-primary mb-4">Bawal Code as a Library</h3>
+                            <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+                                क्या आप जानते हैं? आप Bawal Code का उपयोग अपने Node.js projects में भी कर सकते हैं!
+                                हमने इसे एक standalone NPM package के रूप में publish किया है।
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                                <Link
+                                    href="/npm"
+                                    className="bg-primary text-background px-8 py-3 rounded-theme font-bold hover:bg-primary-dark transition-all text-center"
+                                >
+                                    NPM Guide देखें →
+                                </Link>
+                                <a
+                                    href="https://www.npmjs.com/package/@anubhav_codes/bawal-code"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-transparent border-2 border-primary text-primary px-8 py-3 rounded-theme font-bold hover:bg-primary/10 transition-all text-center"
+                                >
+                                    NPM पर देखें 🚀
+                                </a>
+                            </div>
+
+                            <CodeBlock title="Quick Install">
+                                {`npm i @anubhav_codes/bawal-code`}
+                            </CodeBlock>
+                        </div>
+                    </Section>
+
                     {/* Best Practices */}
+
                     <Section id="best-practices" icon="✨" title="बेस्ट प्रैक्टिसेज">
                         <p className="text-lg text-text-secondary mb-8 text-center">
                             Bawal Code में बेहतर programming के लिए इन guidelines को follow करें
@@ -704,7 +736,7 @@ bawal khatam`}
                                     </div>
                                     <h3 className="text-2xl font-bold text-green-700">सही तरीके</h3>
                                 </div>
-                                
+
                                 <div className="space-y-4">
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-green-500/20 rounded-lg hover:bg-green-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-green-600 text-xl mt-1 group-hover:text-white transition-colors">🎯</span>
@@ -713,7 +745,7 @@ bawal khatam`}
                                             <p className="text-sm text-green-700 group-hover:text-green-100 transition-colors">साफ और समझने योग्य नाम दें</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-green-500/20 rounded-lg hover:bg-green-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-green-600 text-xl mt-1 group-hover:text-white transition-colors">💬</span>
                                         <div>
@@ -721,7 +753,7 @@ bawal khatam`}
                                             <p className="text-sm text-green-700 group-hover:text-green-100 transition-colors">Code को explain करने के लिए</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-green-500/20 rounded-lg hover:bg-green-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-green-600 text-xl mt-1 group-hover:text-white transition-colors">🎨</span>
                                         <div>
@@ -729,7 +761,7 @@ bawal khatam`}
                                             <p className="text-sm text-green-700 group-hover:text-green-100 transition-colors">Code को organized रखें</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-green-500/20 rounded-lg hover:bg-green-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-green-600 text-xl mt-1 group-hover:text-white transition-colors">🛡️</span>
                                         <div>
@@ -737,7 +769,7 @@ bawal khatam`}
                                             <p className="text-sm text-green-700 group-hover:text-green-100 transition-colors">Errors को properly handle करें</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-green-500/20 rounded-lg hover:bg-green-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-green-600 text-xl mt-1 group-hover:text-white transition-colors">⚡</span>
                                         <div>
@@ -756,7 +788,7 @@ bawal khatam`}
                                     </div>
                                     <h3 className="text-2xl font-bold text-red-700">गलत तरीके</h3>
                                 </div>
-                                
+
                                 <div className="space-y-4">
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-red-500/20 rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-red-600 text-xl mt-1 group-hover:text-white transition-colors">🚫</span>
@@ -765,7 +797,7 @@ bawal khatam`}
                                             <p className="text-sm text-red-700 group-hover:text-red-100 transition-colors">a, b, c जैसे नाम avoid करें</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-red-500/20 rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-red-600 text-xl mt-1 group-hover:text-white transition-colors">🤐</span>
                                         <div>
@@ -773,7 +805,7 @@ bawal khatam`}
                                             <p className="text-sm text-red-700 group-hover:text-red-100 transition-colors">Complex code में comments न भूलें</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-red-500/20 rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-red-600 text-xl mt-1 group-hover:text-white transition-colors">💥</span>
                                         <div>
@@ -781,7 +813,7 @@ bawal khatam`}
                                             <p className="text-sm text-red-700 group-hover:text-red-100 transition-colors">Zero से भाग की check न करना</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-red-500/20 rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-red-600 text-xl mt-1 group-hover:text-white transition-colors">📏</span>
                                         <div>
@@ -789,7 +821,7 @@ bawal khatam`}
                                             <p className="text-sm text-red-700 group-hover:text-red-100 transition-colors">बहुत लंबे functions न बनाएं</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start gap-3 p-3 bg-surface border border-red-500/20 rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 group cursor-pointer shadow-md">
                                         <span className="text-red-600 text-xl mt-1 group-hover:text-white transition-colors">⚠️</span>
                                         <div>
@@ -807,23 +839,23 @@ bawal khatam`}
                                 <span className="text-3xl">💡</span>
                                 Pro Tips for Bawal Code
                             </h3>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="bg-surface border border-primary/30 rounded-lg p-4 hover:bg-black transition-all duration-300 group cursor-pointer shadow-lg">
                                     <h4 className="font-bold text-primary mb-2 group-hover:text-orange-500 transition-colors">🎯 Variable Naming</h4>
                                     <p className="text-sm text-text-primary group-hover:text-orange-300 transition-colors">Hindi में meaningful names: <code className="bg-primary/20 px-1 rounded group-hover:bg-orange-500/30 group-hover:text-orange-200 transition-colors">sandesh</code>, <code className="bg-primary/20 px-1 rounded group-hover:bg-orange-500/30 group-hover:text-orange-200 transition-colors">umar</code>, <code className="bg-primary/20 px-1 rounded group-hover:bg-orange-500/30 group-hover:text-orange-200 transition-colors">sankhya</code></p>
                                 </div>
-                                
+
                                 <div className="bg-surface border border-primary/30 rounded-lg p-4 hover:bg-black transition-all duration-300 group cursor-pointer shadow-lg">
                                     <h4 className="font-bold text-primary mb-2 group-hover:text-orange-500 transition-colors">🔄 Loop Safety</h4>
                                     <p className="text-sm text-text-primary group-hover:text-orange-300 transition-colors">हमेशा loop condition को check करें कि infinite loop न बने</p>
                                 </div>
-                                
+
                                 <div className="bg-surface border border-primary/30 rounded-lg p-4 hover:bg-black transition-all duration-300 group cursor-pointer shadow-lg">
                                     <h4 className="font-bold text-primary mb-2 group-hover:text-orange-500 transition-colors">🛡️ Input Validation</h4>
                                     <p className="text-sm text-text-primary group-hover:text-orange-300 transition-colors">User input को हमेशा validate करें before processing</p>
                                 </div>
-                                
+
                                 <div className="bg-surface border border-primary/30 rounded-lg p-4 hover:bg-black transition-all duration-300 group cursor-pointer shadow-lg">
                                     <h4 className="font-bold text-primary mb-2 group-hover:text-orange-500 transition-colors">📝 Code Organization</h4>
                                     <p className="text-sm text-text-primary group-hover:text-orange-300 transition-colors">Related code को functions में group करें</p>
@@ -831,11 +863,11 @@ bawal khatam`}
                             </div>
                         </div>
 
-                        <CodeBlock 
+                        <CodeBlock
                             title="Clean Code Example"
                             description="अच्छी coding practices का उदाहरण"
                         >
-{`bawal suru
+                            {`bawal suru
 
 // एक साफ और समझने योग्य function
 kaam calculate_simple_interest(principal, rate, time) {
@@ -871,8 +903,8 @@ bawal khatam`}
 
                     {/* Back to Top Button */}
                     <div className="text-center mt-16 mb-8">
-                        <a 
-                            href="#intro" 
+                        <a
+                            href="#intro"
                             className="inline-flex items-center gap-2 bg-primary text-background px-6 py-3 rounded-full font-bold transition-all duration-300 hover:bg-primary-dark hover:scale-105 shadow-lg"
                         >
                             ↑ वापस ऊपर जाएं
@@ -884,8 +916,8 @@ bawal khatam`}
                         <p className="text-text-secondary mb-4">
                             यह documentation Bawal Code community द्वारा बनाई गई है।
                         </p>
-                        <Link 
-                            href="/" 
+                        <Link
+                            href="/"
                             className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-bold transition-colors"
                         >
                             ← वापस Bawal Code पर जाएं

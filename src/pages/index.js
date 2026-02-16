@@ -101,13 +101,13 @@ function BawalCodeCompiler() {
                         Bawal Code
                     </h1>
                     <p className="text-text-secondary text-xl font-light mb-6">
-                         Hindi में Programming का स्वाद - Experience Programming in Hindi
+                        Hindi में Programming का स्वाद - Experience Programming in Hindi
                     </p>
                     <div className="flex flex-wrap justify-center gap-4 mb-8">
                         <Link href="/docs" className="bg-primary text-background px-8 py-3 rounded-full font-bold transition-all duration-300 hover:bg-primary-dark hover:scale-105 shadow-lg inline-flex items-center gap-2">
                             📚 Documentation
                         </Link>
-                        <button 
+                        <button
                             onClick={() => document.getElementById('code-editor')?.scrollIntoView({ behavior: 'smooth' })}
                             className="bg-transparent border-2 border-primary text-primary px-8 py-3 rounded-full font-bold transition-all duration-300 hover:bg-primary hover:text-background hover:scale-105"
                         >
@@ -119,6 +119,10 @@ function BawalCodeCompiler() {
                         <Link href="/feedback" className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
                             💭 Feedback
                         </Link>
+                        <Link href="/npm" className="bg-gradient-to-r from-orange-400 to-rose-500 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
+                            📦 NPM Package
+                        </Link>
+
                         {/* <Link href="/admin/dashboard" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
                             📊 Admin Dashboard
                         </Link> */}
@@ -167,11 +171,33 @@ bawal khatam"
                     />
                 </section>
 
-                {/* <section className="mb-12">
-                    <CodeTemplates onSelectTemplate={handleTemplateSelect} />
-                </section> */}
+                <section className="bg-surface border border-primary rounded-theme p-8 text-center mb-12 shadow-2xl relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-4 opacity-10 transform translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500">
+                        <span className="text-8xl">📦</span>
+                    </div>
+                    <div className="relative z-10">
+                        <h2 className="text-3xl font-bold text-primary mb-4 flex justify-center items-center gap-3">
+                            <span>📦</span> Now on NPM!
+                        </h2>
+                        <p className="text-lg text-text-secondary mb-8 max-w-2xl mx-auto">
+                            अपने Node.js projects में Bawal Code का उपयोग करें! हमने इसे एक standalone package के रूप में publish किया है।
+                        </p>
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+                            <div className="bg-background border border-primary/50 px-6 py-3 rounded-theme font-code text-primary shadow-inner">
+                                npm i @anubhav_codes/bawal-code
+                            </div>
+                            <Link
+                                href="/npm"
+                                className="bg-primary text-background px-8 py-3 rounded-theme font-bold hover:bg-primary-dark transition-all shadow-lg hover:shadow-primary/20"
+                            >
+                                NPM Guide देखें →
+                            </Link>
+                        </div>
+                    </div>
+                </section>
 
                 <footer className="text-center py-8 border-t border-surface mt-12">
+
                     <p>
                         Made with ❤️ by{' '}
                         <a
