@@ -79,6 +79,7 @@ export default function Documentation() {
         { id: 'input-output', title: 'इनपुट/आउटपुट (Input/Output)', icon: '💬' },
         { id: 'examples', title: 'उदाहरण (Examples)', icon: '📚' },
         { id: 'npm-pkg', title: 'NPM पैकेज (NPM Package)', icon: '📦' },
+        { id: 'ai-guide', title: 'AI प्रॉम्प्ट गाइड (AI Guide)', icon: '🤖' },
         { id: 'best-practices', title: 'बेस्ट प्रैक्टिसेज (Best Practices)', icon: '✨' }
 
     ];
@@ -716,6 +717,32 @@ bawal khatam`}
                             <CodeBlock title="Quick Install">
                                 {`npm i @anubhav_codes/bawal-code`}
                             </CodeBlock>
+                        </div>
+                    </Section>
+
+                    {/* AI Guide Section */}
+                    <Section id="ai-guide" icon="🤖" title="AI Prompt Guide (AI गाइड)">
+                        <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500 rounded-2xl p-8 mb-8">
+                            <h3 className="text-2xl font-bold text-cyan-500 mb-4">AI से कोड लिखवाएं</h3>
+                            <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+                                क्या आप जानते हैं? आप ChatGPT या Claude जैसे AI का उपयोग करके Bawal Code जनरेट कर सकते हैं।
+                                हमने एक विशेष AI Reference Guide बनाई है जिसे आप कॉपी करके किसी भी AI को दे सकते हैं।
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                                <Link
+                                    href="/ai"
+                                    className="bg-cyan-600 text-white px-8 py-3 rounded-theme font-bold hover:bg-cyan-700 transition-all text-center shadow-lg shadow-cyan-500/20"
+                                >
+                                    AI प्रॉम्प्ट देखें 🤖
+                                </Link>
+                                <Link
+                                    href="/ai"
+                                    className="bg-transparent border-2 border-cyan-600 text-cyan-500 px-8 py-3 rounded-theme font-bold hover:bg-cyan-500/10 transition-all text-center"
+                                >
+                                    AI Reference Guide →
+                                </Link>
+                            </div>
                         </div>
                     </Section>
 

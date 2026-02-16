@@ -122,6 +122,10 @@ function BawalCodeCompiler() {
                         <Link href="/npm" className="bg-gradient-to-r from-orange-400 to-rose-500 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
                             📦 NPM Package
                         </Link>
+                        <Link href="/ai" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
+                            🤖 AI Prompt Guide
+                        </Link>
+
 
                         {/* <Link href="/admin/dashboard" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center gap-2">
                             📊 Admin Dashboard

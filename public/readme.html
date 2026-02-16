@@ -72,6 +72,7 @@
             margin-bottom: 0.5rem;
             background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 10px rgba(78, 204, 163, 0.3));
         }
@@ -106,7 +107,7 @@
             color: var(--primary-color);
             margin-bottom: 1.5rem;
             display: flex;
-            items-center: center;
+            align-items: center;
             gap: 1rem;
         }
 
@@ -327,7 +328,8 @@
                         <strong>Operator Precedence</strong> (BODMAS) to ensure expressions like <code
                             style="color:var(--primary-color)">2 + 3 * 4</code> result in <code
                             style="color:var(--primary-color)">14</code>, not <code
-                            style="color:var(--primary-color)">20</code>.</p>
+                            style="color:var(--primary-color)">20</code>.
+                    </p>
                 </div>
                 <div class="step">
                     <h3>3. Programmatic Execution (Interpreter)</h3>
