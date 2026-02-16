@@ -39,7 +39,9 @@ export default function AdminDashboard() {
 
     const calculateStats = (data) => {
         const total = data.length;
-        const averageRating = data.reduce((sum, item) => sum + item.rating, 0) / total;
+        const averageRating = total > 0 
+            ? (data.reduce((sum, item) => sum + item.rating, 0) / total).toFixed(1) 
+            : "0.0";
         
         const recommendations = data.reduce((acc, item) => {
             acc[item.would_recommend] = (acc[item.would_recommend] || 0) + 1;
@@ -53,11 +55,12 @@ export default function AdminDashboard() {
 
         setStats({
             total,
-            averageRating: averageRating.toFixed(1),
+            averageRating,
             recommendations,
             experiences
         });
     };
+
 
     const getFilteredAndSortedFeedback = () => {
         let filtered = [...feedbacks];
