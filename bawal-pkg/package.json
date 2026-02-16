@@ -8,6 +8,9 @@
     "files": [
         "dist"
     ],
+    "bin": {
+        "bawal": "./dist/cli.js"
+    },
     "publishConfig": {
         "access": "public"
     },

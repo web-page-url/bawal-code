@@ -155,40 +155,6 @@ bawal khatam`}
                     </CodeBlock>
                 </Section>
 
-                <Section id="usage" icon="⚡" title="Programmatic Usage">
-                    <p className="text-lg text-text-secondary mb-6">
-                        अपने Node.js applications में Lexer, Parser, और Interpreter का उपयोग करें:
-                    </p>
-                    <CodeBlock title="JavaScript Example" description="Using the package in your project">
-                        {`const { Lexer, Parser, Interpreter } = require('@anubhav_codes/bawal-code');
-
-const code = \`
-bawal suru
-ye sandesh = "नमस्ते दुनिया!";
-bol sandesh;
-bawal khatam
-\`;
-
-async function run() {
-    try {
-        const lexer = new Lexer();
-        const tokens = lexer.tokenize(code);
-        
-        const parser = new Parser(tokens);
-        const ast = parser.parse();
-        
-        const interpreter = new Interpreter();
-        const output = await interpreter.interpret(ast);
-        
-        console.log(output); // Output: नमस्ते दुनिया!
-    } catch (err) {
-        console.error("Error:", err.message);
-    }
-}
-
-run();`}
-                    </CodeBlock>
-                </Section>
 
                 <Section id="links" icon="🔗" title="Important Links">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
