@@ -10,9 +10,9 @@ export class Parser {
         if (!this.checkProgramStart()) {
             throw new Error("Program must start with 'bawal suru'");
         }
-        
+
         const statements = [];
-        
+
         while (!this.isAtEnd() && !this.isProgramEnd()) {
             try {
                 const stmt = this.parseStatement();
@@ -22,12 +22,12 @@ export class Parser {
                 throw error;
             }
         }
-        
+
         // Check for program end and consume it
         if (!this.isAtEnd() && !this.checkProgramEnd()) {
             throw new Error("Program must end with 'bawal khatam'");
         }
-        
+
         return {
             type: 'Program',
             body: statements
@@ -35,9 +35,9 @@ export class Parser {
     }
 
     checkProgramStart() {
-        if (this.check('keyword', 'bawal') && 
-            this.tokens[this.current + 1] && 
-            this.tokens[this.current + 1].type === 'keyword' && 
+        if (this.check('keyword', 'bawal') &&
+            this.tokens[this.current + 1] &&
+            this.tokens[this.current + 1].type === 'keyword' &&
             this.tokens[this.current + 1].value === 'suru') {
             this.advance(); // consume 'bawal'
             this.advance(); // consume 'suru'
@@ -47,10 +47,10 @@ export class Parser {
     }
 
     isProgramEnd() {
-        return this.check('keyword', 'bawal') && 
-               this.tokens[this.current + 1] && 
-               this.tokens[this.current + 1].type === 'keyword' && 
-               this.tokens[this.current + 1].value === 'khatam';
+        return this.check('keyword', 'bawal') &&
+            this.tokens[this.current + 1] &&
+            this.tokens[this.current + 1].type === 'keyword' &&
+            this.tokens[this.current + 1].value === 'khatam';
     }
 
     checkProgramEnd() {
@@ -68,7 +68,7 @@ export class Parser {
 
         if (this.match('keyword')) {
             const keyword = this.previous().value;
-            
+
             switch (keyword) {
                 case 'ye': return this.parseDeclaration();
                 case 'bol': return this.parsePrintStatement();
@@ -105,13 +105,13 @@ export class Parser {
     parseDeclaration() {
         const name = this.consume('identifier', "Expected variable name").value;
         let initializer = null;
-        
+
         if (this.match('operator', '=')) {
             initializer = this.parseExpression();
         }
-        
+
         this.consume('semicolon', "Expected ';' after variable declaration");
-        
+
         return {
             type: 'Declaration',
             name,
@@ -122,7 +122,7 @@ export class Parser {
     parsePrintStatement() {
         const expression = this.parseExpression();
         this.consume('semicolon', "Expected ';' after print statement");
-        
+
         return {
             type: 'PrintStatement',
             expression
@@ -132,7 +132,7 @@ export class Parser {
     parseInputStatement() {
         const variable = this.consume('identifier', "Expected variable name").value;
         this.consume('semicolon', "Expected ';' after input statement");
-        
+
         return {
             type: 'InputStatement',
             variable
@@ -141,14 +141,14 @@ export class Parser {
 
     parseReturnStatement() {
         let value = null;
-        
+
         // Check if there's an expression to return
         if (!this.check('semicolon')) {
             value = this.parseExpression();
         }
-        
+
         this.consume('semicolon', "Expected ';' after return statement");
-        
+
         return {
             type: 'ReturnStatement',
             value
@@ -159,13 +159,13 @@ export class Parser {
         this.consume('lparen', "Expected '(' after 'agar'");
         const condition = this.parseExpression();
         this.consume('rparen', "Expected ')' after condition");
-        
+
         const consequent = this.parseBlock();
         let alternate = null;
-        
+
         if (this.check('keyword', 'warna')) {
             this.advance(); // consume 'warna'
-            
+
             if (this.check('keyword', 'agar')) {
                 // else if
                 alternate = [this.parseStatement()];
@@ -174,7 +174,7 @@ export class Parser {
                 alternate = this.parseBlock();
             }
         }
-        
+
         return {
             type: 'IfStatement',
             condition,
@@ -187,9 +187,9 @@ export class Parser {
         this.consume('lparen', "Expected '(' after 'jabtak'");
         const condition = this.parseExpression();
         this.consume('rparen', "Expected ')' after condition");
-        
+
         const body = this.parseBlock();
-        
+
         return {
             type: 'WhileStatement',
             condition,
@@ -199,19 +199,19 @@ export class Parser {
 
     parseFunctionDeclaration() {
         const name = this.consume('identifier', "Expected function name").value;
-        
+
         this.consume('lparen', "Expected '(' after function name");
         const parameters = [];
-        
+
         if (!this.check('rparen')) {
             do {
                 parameters.push(this.consume('identifier', "Expected parameter name").value);
             } while (this.match('comma'));
         }
-        
+
         this.consume('rparen', "Expected ')' after parameters");
         const body = this.parseBlock();
-        
+
         return {
             type: 'FunctionDeclaration',
             name,
@@ -223,12 +223,12 @@ export class Parser {
     parseBlock() {
         this.consume('lbrace', "Expected '{'");
         const statements = [];
-        
+
         while (!this.check('rbrace') && !this.isAtEnd()) {
             const stmt = this.parseStatement();
             if (stmt) statements.push(stmt);
         }
-        
+
         this.consume('rbrace', "Expected '}'");
         return statements;
     }
@@ -240,7 +240,7 @@ export class Parser {
 
     parseLogicalOr() {
         let expr = this.parseLogicalAnd();
-        
+
         while (this.match('operator', '||')) {
             const operator = this.previous().value;
             const right = this.parseLogicalAnd();
@@ -251,13 +251,13 @@ export class Parser {
                 right
             };
         }
-        
+
         return expr;
     }
 
     parseLogicalAnd() {
         let expr = this.parseEquality();
-        
+
         while (this.match('operator', '&&')) {
             const operator = this.previous().value;
             const right = this.parseEquality();
@@ -268,13 +268,13 @@ export class Parser {
                 right
             };
         }
-        
+
         return expr;
     }
 
     parseEquality() {
         let expr = this.parseComparison();
-        
+
         while (this.match('operator', '==', '!=')) {
             const operator = this.previous().value;
             const right = this.parseComparison();
@@ -285,13 +285,13 @@ export class Parser {
                 right
             };
         }
-        
+
         return expr;
     }
 
     parseComparison() {
         let expr = this.parseAddition();
-        
+
         while (this.match('operator', '>', '>=', '<', '<=')) {
             const operator = this.previous().value;
             const right = this.parseAddition();
@@ -302,13 +302,13 @@ export class Parser {
                 right
             };
         }
-        
+
         return expr;
     }
 
     parseAddition() {
         let expr = this.parseMultiplication();
-        
+
         while (this.match('operator', '+', '-')) {
             const operator = this.previous().value;
             const right = this.parseMultiplication();
@@ -319,14 +319,14 @@ export class Parser {
                 right
             };
         }
-        
+
         return expr;
     }
 
     parseMultiplication() {
         let expr = this.parseUnary();
-        
-        while (this.match('operator', '*', '/')) {
+
+        while (this.match('operator', '*', '/', '%')) {
             const operator = this.previous().value;
             const right = this.parseUnary();
             expr = {
@@ -336,7 +336,7 @@ export class Parser {
                 right
             };
         }
-        
+
         return expr;
     }
 
@@ -350,13 +350,13 @@ export class Parser {
                 operand: right
             };
         }
-        
+
         return this.parseCall();
     }
 
     parseCall() {
         let expr = this.parsePrimary();
-        
+
         while (true) {
             if (this.match('lparen')) {
                 expr = this.finishCall(expr);
@@ -364,21 +364,21 @@ export class Parser {
                 break;
             }
         }
-        
+
         return expr;
     }
 
     finishCall(callee) {
         const args = [];
-        
+
         if (!this.check('rparen')) {
             do {
                 args.push(this.parseExpression());
             } while (this.match('comma'));
         }
-        
+
         this.consume('rparen', "Expected ')' after arguments");
-        
+
         return {
             type: 'CallExpression',
             callee,
@@ -393,27 +393,27 @@ export class Parser {
                 value: this.previous().value
             };
         }
-        
+
         if (this.match('string')) {
             return {
                 type: 'StringLiteral',
                 value: this.previous().value
             };
         }
-        
+
         if (this.match('identifier')) {
             return {
                 type: 'Identifier',
                 name: this.previous().value
             };
         }
-        
+
         if (this.match('lparen')) {
             const expr = this.parseExpression();
             this.consume('rparen', "Expected ')' after expression");
             return expr;
         }
-        
+
         throw new Error(`Unexpected token: ${this.peek().value} at line ${this.peek().line}`);
     }
 
@@ -460,24 +460,24 @@ export class Parser {
 
     consume(type, message) {
         if (this.check(type)) return this.advance();
-        
+
         const token = this.peek();
         throw new Error(`${message}. Got '${token.value}' at line ${token.line}, column ${token.column}`);
     }
 
     synchronize() {
         this.advance();
-        
+
         while (!this.isAtEnd()) {
             if (this.previous().type === 'semicolon') return;
-            
+
             if (this.peek().type === 'keyword') {
                 const value = this.peek().value;
                 if (['ye', 'bol', 'nivesh', 'agar', 'jabtak', 'kaam'].includes(value)) {
                     return;
                 }
             }
-            
+
             this.advance();
         }
     }

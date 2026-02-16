@@ -2,7 +2,7 @@
 export class Lexer {
     constructor() {
         this.keywords = new Set(['bawal', 'suru', 'khatam', 'ye', 'bol', 'nivesh', 'agar', 'warna', 'jabtak', 'kaam', 'wapis']);
-        this.operators = new Set(['+', '-', '*', '/', '=', '==', '!=', '<', '>', '<=', '>=', '&&', '||']);
+        this.operators = new Set(['+', '-', '*', '/', '%', '=', '==', '!=', '<', '>', '<=', '>=', '&&', '||']);
     }
 
     tokenize(input) {
@@ -109,12 +109,12 @@ export class Lexer {
     _readIdentifier(input, start) {
         let cursor = start;
         let value = '';
-        
+
         while (cursor < input.length && /[a-zA-Z0-9_]/.test(input[cursor])) {
             value += input[cursor];
             cursor++;
         }
-        
+
         return { value, endCursor: cursor };
     }
 
@@ -122,7 +122,7 @@ export class Lexer {
         let cursor = start;
         let value = '';
         let hasDecimal = false;
-        
+
         while (cursor < input.length && (/[0-9]/.test(input[cursor]) || (input[cursor] === '.' && !hasDecimal))) {
             if (input[cursor] === '.') {
                 hasDecimal = true;
@@ -130,7 +130,7 @@ export class Lexer {
             value += input[cursor];
             cursor++;
         }
-        
+
         return {
             type: 'number',
             value: hasDecimal ? parseFloat(value) : parseInt(value),
@@ -141,7 +141,7 @@ export class Lexer {
     _readOperator(input, start) {
         let cursor = start;
         let value = '';
-        
+
         // Handle multi-character operators
         const twoChar = input.slice(cursor, cursor + 2);
         if (['==', '!=', '<=', '>=', '&&', '||'].includes(twoChar)) {
@@ -151,7 +151,7 @@ export class Lexer {
                 endCursor: cursor + 2
             };
         }
-        
+
         // Single character operators
         value = input[cursor];
         return {
@@ -164,7 +164,7 @@ export class Lexer {
     _readString(input, start, quote) {
         let cursor = start + 1; // Skip opening quote
         let value = '';
-        
+
         while (cursor < input.length && input[cursor] !== quote) {
             if (input[cursor] === '\\' && cursor + 1 < input.length) {
                 // Handle escape sequences
@@ -184,13 +184,13 @@ export class Lexer {
             }
             cursor++;
         }
-        
+
         if (cursor >= input.length) {
             throw new Error(`Unterminated string literal starting at position ${start}`);
         }
-        
+
         cursor++; // Skip closing quote
-        
+
         return {
             type: 'string',
             value,
@@ -199,7 +199,7 @@ export class Lexer {
     }
 
     _isOperatorChar(char) {
-        return '+-*/=<>!&|'.includes(char);
+        return '+-*/%=<>!&|'.includes(char);
     }
 
     _getPunctuationType(char) {

@@ -22,18 +22,18 @@ export class Interpreter {
         try {
             for (const statement of ast.body) {
                 await this.executeStatement(statement);
-                
+
                 // Check execution limits
                 this.operationCount++;
                 if (this.operationCount > this.maxOperations) {
                     throw new Error('Maximum operation limit exceeded - possible infinite loop');
                 }
-                
+
                 if (Date.now() - startTime > this.maxExecutionTime) {
                     throw new Error('Maximum execution time exceeded');
                 }
             }
-            
+
             return this.output.join('\n');
         } catch (error) {
             throw new Error(`Runtime Error: ${error.message}`);
@@ -64,7 +64,7 @@ export class Interpreter {
     }
 
     executeDeclaration(statement) {
-        const value = statement.initializer 
+        const value = statement.initializer
             ? this.evaluateExpression(statement.initializer)
             : null;
         this.environment.set(statement.name, value);
@@ -80,7 +80,7 @@ export class Interpreter {
         if (!this.inputCallback) {
             throw new Error('Input not available in this environment');
         }
-        
+
         const value = await this.inputCallback(`Enter value for ${statement.variable}:`);
         // Try to parse as number, otherwise keep as string
         const parsedValue = isNaN(value) ? value : parseFloat(value);
@@ -89,7 +89,7 @@ export class Interpreter {
 
     async executeIfStatement(statement) {
         const condition = await this.evaluateExpression(statement.condition);
-        
+
         if (this.isTruthy(condition)) {
             for (const stmt of statement.consequent) {
                 await this.executeStatement(stmt);
@@ -104,13 +104,13 @@ export class Interpreter {
     async executeWhileStatement(statement) {
         let loopCount = 0;
         const maxLoopIterations = 1000;
-        
+
         while (this.isTruthy(await this.evaluateExpression(statement.condition))) {
             loopCount++;
             if (loopCount > maxLoopIterations) {
                 throw new Error('Maximum loop iteration limit exceeded');
             }
-            
+
             for (const stmt of statement.body) {
                 await this.executeStatement(stmt);
             }
@@ -156,8 +156,8 @@ export class Interpreter {
 
         switch (expression.operator) {
             case '+':
-                return this.isNumber(left) && this.isNumber(right) 
-                    ? left + right 
+                return this.isNumber(left) && this.isNumber(right)
+                    ? left + right
                     : this.valueToString(left) + this.valueToString(right);
             case '-':
                 this.ensureNumbers(left, right, '-');
@@ -169,6 +169,11 @@ export class Interpreter {
                 this.ensureNumbers(left, right, '/');
                 if (right === 0) throw new Error('Division by zero');
                 return left / right;
+            case '%':
+                this.ensureNumbers(left, right, '%');
+                if (right === 0) throw new Error('Modulo by zero');
+                return left % right;
+
             case '==':
                 return left === right;
             case '!=':
@@ -211,7 +216,7 @@ export class Interpreter {
     async evaluateCallExpression(expression) {
         const functionName = expression.callee.name;
         const func = this.functions.get(functionName);
-        
+
         if (!func) {
             throw new Error(`Undefined function: ${functionName}`);
         }
@@ -227,7 +232,7 @@ export class Interpreter {
 
         // Create new scope for function
         const previousEnvironment = new Map(this.environment);
-        
+
         // Bind parameters
         for (let i = 0; i < func.parameters.length; i++) {
             this.environment.set(func.parameters[i], args[i]);
