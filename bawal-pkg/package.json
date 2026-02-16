@@ -1,0 +1,32 @@
+{
+    "name": "bawal-code",
+    "version": "1.0.0",
+    "description": "A Hindi-inspired programming language compiler featuring Lexer, Parser, and Interpreter.",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "keywords": [
+        "bawal",
+        "compiler",
+        "hindi",
+        "programming-language",
+        "interpreter",
+        "lexer",
+        "parser"
+    ],
+    "author": "Anubhav Chaudhary",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsup"
+    },
+    "devDependencies": {
+        "tsup": "^8.0.0",
+        "typescript": "^5.0.0"
+    }
+}
